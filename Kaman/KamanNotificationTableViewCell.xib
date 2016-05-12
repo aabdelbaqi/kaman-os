@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotifCell" rowHeight="100" id="KGk-i7-Jjw" customClass="KamanNotificationTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="326" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="326" height="99"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XLu-hn-ERn">
+                        <rect key="frame" x="8" y="12" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="Zhc-LY-6Uq"/>
+                            <constraint firstAttribute="height" constant="72" id="dYU-ua-vRw"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QT-Fi-a1y">
+                        <rect key="frame" x="88" y="12" width="230" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Flg-3b-wck">
+                        <rect key="frame" x="88" y="63" width="68" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="750" constant="20" id="MZz-Wv-9Xi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                        <state key="normal" title="Message Attendee">
+                            <color key="titleColor" red="0.85490196080000003" green="0.30980392159999998" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWF-bh-oPe">
+                        <rect key="frame" x="229" y="63" width="68" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="750" constant="20" id="cGv-x7-hMa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                        <state key="normal" title="Requests (0)">
+                            <color key="titleColor" red="0.85490196080000003" green="0.30980392159999998" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUN-dN-3m6">
+                        <rect key="frame" x="159" y="63" width="68" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="68" id="ZZ8-AA-AH2"/>
+                            <constraint firstAttribute="height" priority="750" constant="20" id="oRe-kR-qIa"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                        <state key="normal" title="Message Group">
+                            <color key="titleColor" red="0.85490196080000003" green="0.30980392159999998" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbn-ma-hpX">
+                        <rect key="frame" x="88" y="33" width="46" height="23"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
+                        <state key="normal" title="Edit Details">
+                            <color key="titleColor" red="0.85490196080000003" green="0.30980392159999998" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="XLu-hn-ERn" firstAttribute="bottom" secondItem="Flg-3b-wck" secondAttribute="bottom" id="2kL-8v-Lgz"/>
+                    <constraint firstItem="XLu-hn-ERn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="4z2-gr-t9l"/>
+                    <constraint firstItem="Gbn-ma-hpX" firstAttribute="top" secondItem="5QT-Fi-a1y" secondAttribute="bottom" constant="1" id="9Jk-n4-qpp"/>
+                    <constraint firstItem="aWF-bh-oPe" firstAttribute="height" secondItem="Flg-3b-wck" secondAttribute="height" id="BMs-MV-wfD"/>
+                    <constraint firstItem="rUN-dN-3m6" firstAttribute="width" secondItem="Flg-3b-wck" secondAttribute="width" id="BdI-64-0mC"/>
+                    <constraint firstItem="Flg-3b-wck" firstAttribute="leading" secondItem="Gbn-ma-hpX" secondAttribute="leading" id="GAY-Fy-DxT"/>
+                    <constraint firstItem="rUN-dN-3m6" firstAttribute="leading" secondItem="Flg-3b-wck" secondAttribute="trailing" constant="3" id="Ijn-6m-Kln"/>
+                    <constraint firstItem="aWF-bh-oPe" firstAttribute="width" secondItem="Flg-3b-wck" secondAttribute="width" id="ReW-gI-v1L"/>
+                    <constraint firstItem="5QT-Fi-a1y" firstAttribute="leading" secondItem="XLu-hn-ERn" secondAttribute="trailing" constant="8" symbolic="YES" id="VMR-oy-XSh"/>
+                    <constraint firstItem="rUN-dN-3m6" firstAttribute="baseline" secondItem="aWF-bh-oPe" secondAttribute="baseline" id="Vqd-9F-Xcm"/>
+                    <constraint firstItem="rUN-dN-3m6" firstAttribute="baseline" secondItem="Flg-3b-wck" secondAttribute="baseline" id="Vri-r3-ac4"/>
+                    <constraint firstItem="aWF-bh-oPe" firstAttribute="baseline" secondItem="rUN-dN-3m6" secondAttribute="firstBaseline" id="aRj-wi-uMb"/>
+                    <constraint firstItem="5QT-Fi-a1y" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="byW-Fr-Uhb"/>
+                    <constraint firstItem="rUN-dN-3m6" firstAttribute="height" secondItem="Flg-3b-wck" secondAttribute="height" id="l2S-s2-ev1"/>
+                    <constraint firstItem="rUN-dN-3m6" firstAttribute="baseline" secondItem="Flg-3b-wck" secondAttribute="firstBaseline" id="lvB-SR-W8r"/>
+                    <constraint firstItem="XLu-hn-ERn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="m0X-cv-hKd"/>
+                    <constraint firstItem="Gbn-ma-hpX" firstAttribute="leading" secondItem="5QT-Fi-a1y" secondAttribute="leading" id="teA-N8-CYM"/>
+                    <constraint firstItem="aWF-bh-oPe" firstAttribute="leading" secondItem="rUN-dN-3m6" secondAttribute="trailing" constant="2" id="xaI-HE-eRb"/>
+                    <constraint firstItem="XLu-hn-ERn" firstAttribute="top" secondItem="5QT-Fi-a1y" secondAttribute="top" id="ymp-r8-B3D"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="button1" destination="Flg-3b-wck" id="Kq1-lY-0b2"/>
+                <outlet property="button2" destination="rUN-dN-3m6" id="feL-ZZ-A8M"/>
+                <outlet property="button3" destination="aWF-bh-oPe" id="HPy-Q4-5Zn"/>
+                <outlet property="editViewButton" destination="Gbn-ma-hpX" id="c7t-vs-JcL"/>
+                <outlet property="imageViewHeightConstraint" destination="dYU-ua-vRw" id="AAg-Ll-tA5"/>
+                <outlet property="imageViewWidthConstraint" destination="Zhc-LY-6Uq" id="37p-Dj-2ey"/>
+                <outlet property="kamanImageView" destination="XLu-hn-ERn" id="wSS-sP-vRk"/>
+                <outlet property="kamanNameLabel" destination="5QT-Fi-a1y" id="aC0-9a-vAD"/>
+            </connections>
+            <point key="canvasLocation" x="257" y="158"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2Tc-r9-K66" customClass="KamansTableEmptyView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no more Kamans around you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhK-PP-s7U">
+                    <rect key="frame" x="21" y="309" width="280" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="PUe-Po-jiJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNP-TI-uir">
+                    <rect key="frame" x="49" y="381" width="223" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="seM-hf-54Q"/>
+                        <constraint firstAttribute="width" constant="223" id="xz7-hz-Phy"/>
+                    </constraints>
+                    <state key="normal" title="Host a Kaman"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a4E-tg-Pjj" customClass="FLAnimatedImageView">
+                    <rect key="frame" x="8" y="5" width="304" height="299"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jm8-bG-B6F">
+                    <rect key="frame" x="49" y="444" width="223" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="ayS-uh-aFC"/>
+                    </constraints>
+                    <state key="normal" title="Invite Friends"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="a4E-tg-Pjj" firstAttribute="leading" secondItem="2Tc-r9-K66" secondAttribute="leading" constant="8" id="0Tv-zw-7my"/>
+                <constraint firstAttribute="bottom" secondItem="Jm8-bG-B6F" secondAttribute="bottom" constant="84" id="6AJ-Ox-hM2"/>
+                <constraint firstAttribute="trailing" secondItem="RhK-PP-s7U" secondAttribute="trailing" constant="19" id="Bhx-Y3-Bh2"/>
+                <constraint firstItem="JNP-TI-uir" firstAttribute="width" secondItem="Jm8-bG-B6F" secondAttribute="width" id="Fed-Ik-clf"/>
+                <constraint firstItem="JNP-TI-uir" firstAttribute="top" secondItem="RhK-PP-s7U" secondAttribute="bottom" constant="41" id="Mpg-pa-P7b"/>
+                <constraint firstAttribute="trailing" secondItem="a4E-tg-Pjj" secondAttribute="trailing" constant="8" id="Rtp-AQ-R42"/>
+                <constraint firstItem="a4E-tg-Pjj" firstAttribute="top" secondItem="2Tc-r9-K66" secondAttribute="top" constant="5" id="VdB-Sd-L9J"/>
+                <constraint firstItem="RhK-PP-s7U" firstAttribute="leading" secondItem="2Tc-r9-K66" secondAttribute="leadingMargin" constant="13" id="e3C-x2-P5h"/>
+                <constraint firstItem="JNP-TI-uir" firstAttribute="leading" secondItem="Jm8-bG-B6F" secondAttribute="leading" id="eFg-Ds-1JD"/>
+                <constraint firstItem="RhK-PP-s7U" firstAttribute="top" secondItem="a4E-tg-Pjj" secondAttribute="bottom" constant="5" id="fg4-2K-Gah"/>
+                <constraint firstItem="a4E-tg-Pjj" firstAttribute="centerX" secondItem="2Tc-r9-K66" secondAttribute="centerX" id="lJ7-VM-jxI"/>
+                <constraint firstItem="Jm8-bG-B6F" firstAttribute="top" secondItem="JNP-TI-uir" secondAttribute="bottom" constant="23" id="lvp-M4-StL"/>
+                <constraint firstItem="RhK-PP-s7U" firstAttribute="centerX" secondItem="JNP-TI-uir" secondAttribute="centerX" constant="0.5" id="oKj-GG-1Hq"/>
+                <constraint firstItem="RhK-PP-s7U" firstAttribute="centerX" secondItem="a4E-tg-Pjj" secondAttribute="centerX" constant="1" id="vqL-y9-EZn"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="animImageView" destination="a4E-tg-Pjj" id="0HJ-h4-dIO"/>
+                <outlet property="hostButton" destination="JNP-TI-uir" id="8Uz-mA-kHf"/>
+                <outlet property="inviteButton" destination="Jm8-bG-B6F" id="Ygr-QX-qtc"/>
+                <outlet property="statusLabel" destination="RhK-PP-s7U" id="NRt-Ea-B55"/>
+            </connections>
+            <point key="canvasLocation" x="186" y="270"/>
+        </view>
+    </objects>
+</document>
