@@ -23,6 +23,7 @@ UITextField * activeField;
 NSMutableArray *kamanPhotos;
 CGFloat originalHeight;
 PFObject *kamanArea;
+BOOL savingKaman;
 @implementation HostKamanViewController{
      GMSPlacesClient *_placesClient;
 }
@@ -67,7 +68,11 @@ PFObject *kamanArea;
 
 -(void) saveKamanInLocalArea
 {
-     JGProgressHUD *HUD = [Utils showProgressDialogInView:self.view withMessage:@"Saving..."];
+    if(savingKaman) {
+        return;
+    }
+    savingKaman = true;
+    JGProgressHUD *HUD = [Utils showProgressDialogInView:self.view withMessage:@"Saving..."];
     NSDate *date = [Utils combineDate:[[Utils getDateFormatter_DD_MMMM_YYYY] dateFromString:self.dateTextField.text] withTime:[[Utils getTimeFormatter_H_MM_AMPM] dateFromString:self.timeTextField.text]];
         
         PFObject *kaman = self.kaman == nil? [PFObject objectWithClassName:@"Kaman"] : self.kaman;
@@ -89,7 +94,8 @@ PFObject *kamanArea;
         }
         
         [kaman saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-             [HUD dismissAnimated:YES];
+            [HUD dismissAnimated:YES];
+            savingKaman = false;
             if(succeeded) {
                 if(self.kaman == nil) { // dont update counter on edited kamans
                     [[PFUser currentUser] addUniqueObjectsFromArray:[NSArray arrayWithObject:kaman.objectId] forKey:@"KamansHosted"];
