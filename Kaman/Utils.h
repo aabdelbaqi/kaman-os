@@ -29,6 +29,7 @@
 #import <Google/Analytics.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "CWStatusBarNotification.h"
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -98,12 +99,6 @@
 
 + (NSString *) append:(id) first, ...;
 
-+(NSString*) getPFUserAgeAsString:(PFUser*) user onNoAge :(NSString*) noAge;
-
-+(void) updateCurrentPFUserColumn: (NSString*) column withValue: (id) value onCallBack: (ResultCallback) callback;
-
-+(void) updatePFUser:(PFUser*) user onColumn: (NSString*) column withValue: (id) value onCallBack: (ResultCallback) callback;
-
 +(void) styleButton: (UIButton*) button bgColor: (UIColor*) bgColor highlightColor: (UIColor*) highlightColor;
 
 +(void) styleButton: (UIButton*) button bgColor: (UIColor*) bgColor highlightColor: (UIColor*) highlightColor radius: (NSInteger) radii;
@@ -138,7 +133,7 @@
 
 +(void) fetchLocalNotifs:(ResultCallback) whenDone;
 
-+(void) addLocalNotifOfType:(NSString*) type fromSender :(NSString*) senderObjId forKaman: (NSString*) kamanObjId hostedBy:(NSString*) kamanHostId withAlert:(NSString*) alert dated:(NSDate*) date;
++(void) addLocalNotifWithID:(NSString*)_id ofType:(NSString*) type fromSender :(NSString*) senderObjId forKaman: (NSString*) kamanObjId hostedBy:(NSString*) kamanHostId withAlert:(NSString*) alert dated:(NSDate*) date;
 
 +(void) sendGoogleAnalyticsTrackEventOfCategory:(NSString*) category
                                          action:(NSString*) action labeled:(NSString*)label withValue: (NSNumber*) value;
@@ -147,7 +142,7 @@
 
 +(void) goToTerms:(UIViewController*) controller skipToPrivacy:(BOOL) skipToPrivacy;
 
-+(void) deleteNotifsWithQuery:(NSString*) query;
++(NSInteger) deleteNotifsWithQuery:(NSString*) query;
 
 +(void) fetchFBFriends;
 
@@ -160,6 +155,10 @@
 +(void) switchHUD:(JGProgressHUD*) HUD toProgress: (float) progress withMessage:(NSString*) msg andTitle:(NSString*) title;
 
 +(void) switchHUD:(JGProgressHUD*) HUD withSuccess: (BOOL) success message:(NSString*) msg title: (NSString*) title andDismiss:(BOOL) dismiss;
+
++(void) invitesAndRequestsForKaman:(PFObject*) kaman onSuccess:(ArrayPairResultCallback) callback onError:(ErrorCallback) errorCallback;
+
++(void) showStatusNotificationWithMessage:(NSString*) msg isError:(BOOL) isError;
 
 @end
 

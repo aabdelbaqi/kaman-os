@@ -299,57 +299,6 @@ BOOL reloadOnViewDidAppear = true;
     return (space - 10) / 2;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.row) {
-        case 0:
-            return self.tableView.frame.size.width - 20;
-        case 1:
-            return [self calculate2ndRowHeight];
-        case 9:
-            if([self.attendees count] == 0) {
-                return 0.0;
-            }
-            return 100.0;
-        default:
-            break;
-    }
-    return UITableViewAutomaticDimension;;//tableView.frame.size.height;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    if ([self.kamans count] > 0) {
-        
-        self.tableView.backgroundView = nil;
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.tableView.tableFooterView = [UIView new];
-        return 1;
-        
-    } else {
-        
-        // Display a message when the table is empty
-        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-        
-        
-        NSString *text = @"Nothing to show :(";
-        
-        messageLabel.text = text;
-        messageLabel.textColor = MyOrangeColor;
-        messageLabel.numberOfLines = 0;
-        messageLabel.textAlignment = NSTextAlignmentCenter;
-        messageLabel.font =  [UIFont systemFontOfSize:14];
-        [messageLabel sizeToFit];
-        
-        self.tableView.backgroundView = messageLabel;
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-    }
-    
-    return 0;
-}
-
 
 -(void) closePhotos: (id) sender
 {
@@ -416,7 +365,7 @@ BOOL reloadOnViewDidAppear = true;
     PFObject *kaman = [self.kamans firstObject];
     UserProfileViewController *someViewController = [storyboard instantiateViewControllerWithIdentifier:@"user_profile"];
     someViewController.users = [NSMutableArray arrayWithObject:user];
-    someViewController.kaman = kaman;
+    someViewController.kamanObject = kaman;
     
     [Utils setTitle:isHost ? @"Host Profile" : @"Attendee Profile" withColor:MyOrangeColor andSubTitle:kaman != nil ? [kaman objectForKey:@"Name"] :@"Party" withColor:MyOrangeColor onNavigationController:someViewController];
     
@@ -453,6 +402,65 @@ BOOL reloadOnViewDidAppear = true;
         }
     }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     PFObject *kaman = [self.kamans firstObject];
+    NSDictionary *fontWithAttributes = @{NSFontAttributeName:[UIFont systemFontOfSize:15]};
+    CGSize sz = [[NSString stringWithFormat:@" %@", [kaman objectForKey: @"Description"]] sizeWithAttributes:fontWithAttributes];
+                 
+    switch (indexPath.row) {
+        case 0:
+            return self.tableView.frame.size.width - 20;
+        case 1:
+            return [self calculate2ndRowHeight];
+        case 3:
+             NSLog(@"Description height: %f",sz.height);
+            return sz.height*5;
+        case 9:
+            if([self.attendees count] == 0) {
+                return 0.0;
+            }
+            return 100.0;
+        default:
+            break;
+    }
+    return UITableViewAutomaticDimension;;//tableView.frame.size.height;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    if ([self.kamans count] > 0) {
+        
+        self.tableView.backgroundView = nil;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.tableFooterView = [UIView new];
+        return 1;
+        
+    } else {
+        
+        // Display a message when the table is empty
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        
+        NSString *text = @"Nothing to show :(";
+        
+        messageLabel.text = text;
+        messageLabel.textColor = MyOrangeColor;
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font =  [UIFont systemFontOfSize:14];
+        [messageLabel sizeToFit];
+        
+        self.tableView.backgroundView = messageLabel;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+    }
+    
+    return 0;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PFObject *kaman = [self.kamans firstObject];
@@ -607,6 +615,8 @@ BOOL reloadOnViewDidAppear = true;
         cell.backgroundColor = MyBrownColor;
         [cell.textLabel setText:[NSString stringWithFormat:@" %@", [kaman objectForKey: @"Description"]]];
         [cell.textLabel setFont:[UIFont systemFontOfSize:15]];
+        [cell.textLabel setNumberOfLines:10];
+        [cell.textLabel sizeToFit];
         [cell.textLabel setTextColor:MyDarkGrayColor];
         return cell;
     } else if (indexPath.row == 9) {

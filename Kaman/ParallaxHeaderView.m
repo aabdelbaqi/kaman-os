@@ -65,8 +65,7 @@ static CGFloat kBackgroudOpacity = 0.3f;
         self.imageScrollView.frame = frame;
         self.bluredImageView.alpha = 1 * offset.y * 2;
         self.clipsToBounds = YES;
-        NSLog(@"Alpha down %f",self.bluredImageView.alpha);
-    
+       
     }
     else
     {
@@ -82,7 +81,7 @@ static CGFloat kBackgroudOpacity = 0.3f;
         
         self.imageScrollView.frame = rect;
         self.clipsToBounds = NO;
-         NSLog(@"Alpha up %f from offset %f & height %f",self.bluredImageView.alpha, offset.y,kDefaultHeaderFrame.size.height);
+        // NSLog(@"Alpha up %f from offset %f & height %f",self.bluredImageView.alpha, offset.y,kDefaultHeaderFrame.size.height);
         self.headerTitleLabel.alpha = 1 - (delta) * 1 / kMaxTitleAlphaOffset;
         for (UIView *sv in self.subviews) {
             if(sv.tag == 1000)

@@ -1,5 +1,5 @@
 PODS:
-  - ActionSheetPicker-3.0 (2.0.5)
+  - ActionSheetPicker-3.0 (2.1.0)
   - AFNetworking (2.6.3):
     - AFNetworking/NSURLConnection (= 2.6.3)
     - AFNetworking/NSURLSession (= 2.6.3)
@@ -27,33 +27,38 @@ PODS:
   - Bolts/AppLinks (1.7.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.7.0)
+  - Crashlytics (3.7.2):
+    - Fabric (~> 1.6.3)
+  - CWStatusBarNotification (2.3.4)
   - DateTools (1.7.0)
-  - FBSDKCoreKit (4.10.1):
-    - Bolts (~> 1.5)
-  - FBSDKLoginKit (4.10.1):
+  - Fabric (1.6.7)
+  - FBSDKCoreKit (4.12.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.12.0):
     - FBSDKCoreKit
+  - FirebaseAnalytics (3.2.0):
+    - FirebaseInstanceID (~> 1.0)
+    - GoogleInterchangeUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+    - GoogleUtilities (~> 1.3)
+  - FirebaseInstanceID (1.0.6)
   - FLAnimatedImage (1.0.12)
   - FXBlurView (1.6.4)
-  - Google/Analytics (2.0.3):
+  - Google/Analytics (3.0.3):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
-  - Google/Core (2.0.3):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.1)
+  - Google/Core (3.0.3):
+    - FirebaseAnalytics (~> 3.2)
   - GoogleAnalytics (3.14.0)
-  - GoogleInterchangeUtilities (1.2.0):
+  - GoogleInterchangeUtilities (1.2.1):
     - GoogleSymbolUtilities (~> 1.0)
-  - GoogleMaps (1.13.0)
-  - GoogleNetworkingUtilities (1.2.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.1.0)
-  - GoogleUtilities (1.2.0):
+  - GoogleMaps (1.13.2)
+  - GoogleSymbolUtilities (1.1.1)
+  - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
   - HexColors (2.2.1)
-  - JGProgressHUD (1.3.1)
-  - JSQMessagesViewController (7.2.0):
+  - JGProgressHUD (1.3.2)
+  - JSQMessagesViewController (7.3.2):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - NYTPhotoViewer (1.1.0):
@@ -74,19 +79,22 @@ PODS:
     - FBSDKLoginKit (~> 4.10)
     - FBSDKTVOSKit (~> 4.10)
     - Parse (~> 1.12)
-  - Realm (0.98.6):
-    - Realm/Headers (= 0.98.6)
-  - Realm/Headers (0.98.6)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
+  - Realm (1.0.0):
+    - Realm/Headers (= 1.0.0)
+  - Realm/Headers (1.0.0)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - AFNetworking (~> 2.0)
+  - Crashlytics
+  - CWStatusBarNotification (~> 2.3.4)
   - DateTools
+  - Fabric
   - FLAnimatedImage (~> 1.0)
   - Google/Analytics
   - GoogleMaps
@@ -102,32 +110,38 @@ DEPENDENCIES:
   - TSMessages
 
 SPEC CHECKSUMS:
-  ActionSheetPicker-3.0: 8312778b6815578e6a86d630fbcf31dc94c534e7
+  ActionSheetPicker-3.0: db66605feb85689279d328206c61f0e4f398df92
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
+  CWStatusBarNotification: 3fec41edcb0ae3677d9febfcb9632d8bdf52294c
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  FBSDKCoreKit: d2aaed5e9ab7d8d6301c533376a1fbff1cf3deb5
-  FBSDKLoginKit: 699ff169080e3072de4b9b0faca90bf23dc36deb
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
+  FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
+  FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
+  FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
-  Google: 61379f0072bc561a7e174d23a6cbe41bd6d8599c
+  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
-  GoogleInterchangeUtilities: 427382e42d8a340038bec37c6fdfd316e14b5fa2
-  GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
-  GoogleNetworkingUtilities: ec1e9911aca811eb18b7144394fee6168b607785
-  GoogleSymbolUtilities: eb3965ea12710569c7b80db198a39e39b18613f7
-  GoogleUtilities: 85f8ad6b251544286a97163133d042ec95f889c5
+  GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
+  GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
+  GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
+  GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
-  JGProgressHUD: 153053a21d81208cb5f659691996bcefce6a9885
-  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JGProgressHUD: ccac0ead9b771eac0ebcc2b0800efd7f1e1784dc
+  JSQMessagesViewController: bf14e4d644e1c59476f47f2f8410c34c6c0294f3
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   NYTPhotoViewer: e80e8767f3780d2df37c6f72cbab15d6c7232911
   OCMapper: fa22e7b51de7cc38e66b993037076d28a0f31b29
   ParallaxBlur: 352a49c2319b41f3b334456815089afb1220b799
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
-  Realm: 44803f35418c5d89b27825a564247fcd190de37e
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 24391ee0ea5cb37595a162fe05fd8871c667aed9
+
+COCOAPODS: 1.0.1

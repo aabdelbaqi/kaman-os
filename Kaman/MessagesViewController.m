@@ -9,7 +9,7 @@
 
 #import "MessagesViewController.h"
 #import "Session.h"
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 #import <DateTools/DateTools.h>
 
 @implementation MessagesViewController

@@ -20,11 +20,11 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Session.h"
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 #import "ParallaxHeaderView.h"
 
 @interface HomeViewController ()
-
+@property BOOL devMode;
 @end
 
 LocalPlace *currentLocality;
@@ -70,24 +70,23 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *lastLocalityName = [defaults stringForKey:@"last_locality_name"];
-     NSString *lastLocalityCCode = [defaults stringForKey:@"last_locality_country_code"];
+    NSString *lastLocalityCCode = [defaults stringForKey:@"last_locality_country_code"];
+    
     if(lastLocalityName) {
         NSString * query = [NSString stringWithFormat:  @"name = '%@' AND countryCode = '%@'", lastLocalityName, lastLocalityCCode];
-         RLMResults *areas = [LocalPlace objectsWhere:query];
+        RLMResults *areas = [LocalPlace objectsWhere:query];
         if([areas count] > 0) {
             currentLocality = [areas objectAtIndex:0];
             [self searchKamans];
         }
     }
-    
-    [self onUserLoggedIn];
 }
 
 
 -(void) updateNotifBadge
 {
     
-    RLMResults<LocalNotif *> *notifs = [LocalNotif allObjects]; // retrieves all LocalNotifs from the default Realm
+    RLMResults<KamanLocalNotif *> *notifs = [KamanLocalNotif allObjects]; // retrieves all LocalNotifs from the default Realm
     UIView * view = [self.notifbarButton valueForKey:@"view"];
 
     view.badgeView.badgeValue = [notifs count];
@@ -123,13 +122,21 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
     if(![FBSDKAccessToken currentAccessToken] ) {
         [PFUser logOutInBackground];
         [Utils deleteNotifsWithQuery:nil];
-      
+     
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"lastLoadDate"];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"lastDate"];
         
         [[self presentingViewController] dismissViewControllerAnimated:NO completion:nil];
         return;
     }
     
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig *config, NSError *error) {
+        if(config) {
+            NSNumber *devModeNSNumber = [config objectForKey: @"DevMode"];
+            _devMode = [devModeNSNumber boolValue];
+
+        }
+    }];
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     if(currentInstallation) {
         currentInstallation[@"user"] = [PFUser currentUser];
@@ -196,53 +203,22 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
     kamansViewed += 1;
 }
 
--(void) doRequestParty
+-(void) doRequestParty:(PFObject*) kaman
 {
     PFUser *user = [PFUser currentUser];
-    PFObject *kaman = [self.kamans firstObject];
+   // PFObject *kaman = [self.kamans firstObject];
+    if(!kaman) {
+        return;
+    }
     PFUser *host = [kaman objectForKey:@"Host"];
-    PFRelation *relation = [kaman relationForKey:@"Requests"];
-    
-    PFObject *kamanRequest = [PFObject objectWithClassName:@"KamanRequest"];
-    [kamanRequest setObject:user forKey:@"RequestingUser"];
-    [kamanRequest setObject:kaman forKey:@"Kaman"];
-    [kamanRequest setObject:[NSNumber numberWithBool:NO] forKey:@"Accepted"];
-    [kamanRequest saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
-        if (!error) {
-            [relation addObject:kamanRequest];
-            
-            [kaman saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                if(!error) {
-                    [user addUniqueObjectsFromArray:[NSArray arrayWithObject:kaman.objectId] forKey:@"LikedKamans"];
-                    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                        if(error) {
-                            NSLog(@"Error saving user liked kaman: %@",error.localizedDescription);
-                        }
-                    }];
-                    
-                    if([host notifyRequests]) {
-                        [Utils sendPushFor:PUSH_TYPE_REQUESTED toUser:host withMessage:[NSString stringWithFormat: @"Someone wants to attend '%@'.",[kaman objectForKey:@"Name"]] ForKaman:kaman];
-                    }
-
-                } else {
-                    NSLog(@"Error making Kaman Request: %@",error.localizedDescription);
-                    [kaman saveEventually];
-                    [user addUniqueObjectsFromArray:[NSArray arrayWithObject:kaman.objectId] forKey:@"LikedKamans"];
-                    [user saveEventually:^(BOOL succeeded, NSError * _Nullable error) {
-                        if(error) {
-                            NSLog(@"Error saving user liked kaman: %@",error.localizedDescription);
-                        }
-                    }];
-                }
-            }];
-
-        } else {
-           [TSMessage showNotificationWithTitle:[kaman objectForKey:@"Name"] subtitle:[NSString stringWithFormat:@"Error requesting attendance: %@", error.localizedDescription] type:TSMessageNotificationTypeError];
+    [user requestToAttendKaman:kaman onCallBack:^(id result) {
+        if([host notifyRequests]) {
+            [Utils sendPushFor:PUSH_TYPE_REQUESTED toUser:host withMessage:[NSString stringWithFormat: @"Someone wants to attend '%@'.",[kaman objectForKey:@"Name"]] ForKaman:kaman];
         }
-        
+    } onError:^(NSError *error) {
+         NSLog(@"Error %@",error);
+        [Utils showStatusNotificationWithMessage:[NSString stringWithFormat:@"Error: %@", error.localizedDescription] isError:YES];
     }];
-    
     
 }
 
@@ -252,15 +228,19 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
     PFUser *user = [PFUser currentUser];
     PFObject *kaman = [self.kamans firstObject];
     
-    NSArray * likedKamans = [user objectForKey:@"LikedKamans"];
-    if([likedKamans containsObject:kaman.objectId]) {
-        [TSMessage showNotificationWithTitle:[kaman objectForKey:@"Name"] subtitle:@"You already requested to join this Kaman" type:TSMessageNotificationTypeWarning];
+    [user hasBeenInvitedOrHasRequestedToAttendKaman:kaman onCallBack:^(BOOL result) {
+        if (result) {
+              NSLog(@"you have already been invited or requested to attaned %@",[kaman objectForKey:@"Name"]);
+            [Utils showStatusNotificationWithMessage:@"Already requested or been invited to attend this Kaman" isError:NO];
+        }else {
+            NSLog(@"you have NOT been invited or requested to attaned %@",[kaman objectForKey:@"Name"]);
+             [self doRequestParty:kaman];
+        }
         
-    } else {
-        
-        [self doRequestParty];
-
-    }
+    } onError:^(NSError *error) {
+        NSLog(@"Error %@",error);
+         [Utils showStatusNotificationWithMessage:[NSString stringWithFormat:@"Error: %@", error.localizedDescription] isError:YES];
+    }];
 
     [self.kamans removeObjectAtIndex:0];
     [self resetCounters];
@@ -282,87 +262,6 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
     self.tableSize = TABLE_SIZE_BASIC;
 }
 
--(void) onUserLoggedIn
-{
-    PFUser * user = [PFUser currentUser];
-    PFQuery * query = [PFQuery queryWithClassName:@"KamanRequest"];
-    [query whereKey:@"RequestingUser" equalTo:user];
-    [query includeKey:@"Kaman"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if(!error) {
-            for (PFObject *obj in objects) {
-                PFObject * kaman = [obj objectForKey:@"Kaman"];
-                NSLog(@"Liked Kaman: %@",kaman.objectId);
-                [user addUniqueObjectsFromArray:[NSArray arrayWithObject:kaman.objectId] forKey:@"LikedKamans"];
-                NSNumber *acceptedNSNumber = [obj objectForKey: @"Accepted"];
-                bool _boolean = [acceptedNSNumber boolValue];
-                if(_boolean) {
-                    [user addUniqueObjectsFromArray:[NSArray arrayWithObject:kaman.objectId] forKey:@"KamansAttended"];
-                    
-                }
-                [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if(error) {
-                        [user saveEventually];
-                        NSLog(@"Error saving user liked kaman: %@",error.localizedDescription);
-                    }
-                }];
-
-            }
-        } else {
-            NSLog(@"Error finding user liked kamans: %@",error.localizedDescription);
-        }
-    }];
-    
-    PFQuery * query2 = [PFQuery queryWithClassName:@"KamanInvite"];
-    [query2 whereKey:@"InvitedUser" equalTo:user];
-    [query2 includeKey:@"Kaman"];
-    [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if(!error) {
-            for (PFObject *obj in objects) {
-                PFObject * kaman = [obj objectForKey:@"Kaman"];
-                NSLog(@"Invited Kaman: %@",kaman.objectId);
-                [user addUniqueObjectsFromArray:[NSArray arrayWithObject:kaman.objectId] forKey:@"InvitedKamans"];
-                NSNumber *acceptedNSNumber = [obj objectForKey: @"Accepted"];
-                bool _boolean = [acceptedNSNumber boolValue];
-                if(_boolean) {
-                    [user addUniqueObjectsFromArray:[NSArray arrayWithObject:kaman.objectId] forKey:@"KamansAttended"];
-                    
-                }
-                [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if(error) {
-                        [user saveEventually];
-                        NSLog(@"Error saving user invited kaman: %@",error.localizedDescription);
-                    }
-                }];
-                
-            }
-        }  else {
-            NSLog(@"Error finding user invited kaman: %@",error.localizedDescription);
-        }
-
-    }];
-    
-    PFQuery * query3 = [PFQuery queryWithClassName:@"Kaman"];
-    [query3 whereKey:@"Host" equalTo:user];
-    [query3 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if(!error) {
-            for (PFObject *kaman in objects) {
-                NSLog(@"User Hosted Kaman: %@",kaman.objectId);
-                [user addUniqueObjectsFromArray:[NSArray arrayWithObject:kaman.objectId] forKey:@"KamansHosted"];
-                [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if(error) {
-                        [user saveEventually];
-                        NSLog(@"Error saving user invited kaman: %@",error.localizedDescription);
-                    }
-                }];
-                
-            }
-        }  else {
-            NSLog(@"Error finding user invited kaman: %@",error.localizedDescription);
-        }
-        
-    }];
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -407,13 +306,24 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
     return 0;
 }
 
+
 -(IBAction)searchKamans
 {
+    [[PFUser currentUser] syncOnLoggedIn:^(id result) {
+        [self doActuallySearchKamans];
+    }];
+}
+
+-(void) doActuallySearchKamans
+{
+
     [self updateNotifBadge];
     
     if([self.kamans count] > 0) {
         return;
     }
+    
+    
     PFUser *user = [PFUser currentUser];
     
     NSNumber *distanceNSNumber = [[PFUser currentUser] objectForKey: @"DiscoveryPerimeter"];
@@ -428,11 +338,9 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
     // Interested in locations near user.
    
     //[query whereKey:@"CountryCode" equalTo:currentLocality.countryCode];
-    if(DEV_MODE == 0) {
+    if(self.devMode == false) {
         [query whereKey:@"LatLong" nearGeoPoint:userGeoPoint withinKilometers:distanceNSNumber.intValue];
     }
-    // Limit what could be a lot of points.
-    //query.limit = 1;
     // Final list of objects
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         
@@ -461,7 +369,7 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
                         for (PFObject * kmn in objects) {
                             PFUser * host = [kmn objectForKey:@"Host"];
                             NSArray * invited = [[PFUser currentUser] objectForKey:@"InvitedKamans"];
-                             NSArray * liked = [[PFUser currentUser] objectForKey:@"LikedKamans"];
+                            NSArray * liked = [[PFUser currentUser] objectForKey:@"LikedKamans"];
                             if(![invited containsObject:kmn.objectId] && ![liked containsObject:kmn.objectId]) // only if kaman is not alreay liked by user and user not invited to already
                         
                                 // if user only wants posts from Facebook friends, we filter the rest out
@@ -474,7 +382,7 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
                                 }
                             
                         }
-                         statusText = [NSString stringWithFormat: @"There are %lu Kamans around you",[self.kamans count] ];
+                         statusText = [NSString stringWithFormat: @"There are %lu Kamans around you",(unsigned long)[self.kamans count] ];
                         
                         self.kamanImages = [NSMutableArray new];
                         self.tableSize = TABLE_SIZE_BASIC;
@@ -579,7 +487,7 @@ ParallaxHeaderView *profileHeaderView, *menuHeaderView;
                                currentLocality = result;
                                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                                
-                               [Utils updateCurrentPFUserColumn:@"LastKnownLocation" withValue:[PFGeoPoint geoPointWithLocation:placemark.location] onCallBack:^(id result) {
+                               [[PFUser currentUser] updateUserColumn:@"LastKnownLocation" withValue:[PFGeoPoint geoPointWithLocation:placemark.location] onCallBack:^(id result) {
                                    
                                }];
                                [defaults setObject:currentLocality.name forKey:@"last_locality_name"];

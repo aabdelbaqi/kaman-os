@@ -8,7 +8,7 @@
 
 #import "OtherNotifsTableViewController.h"
 #import "Utils.h"
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 #import <DateTools/DateTools.h>
 #import "OtherNotifsTableViewCell.h"
 
@@ -53,8 +53,8 @@ NSMutableArray * otherNotifs;
     otherNotifs = [NSMutableArray new];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    RLMResults<LocalNotif *> *targetNotifs = [LocalNotif objectsWhere:[NSString stringWithFormat:@"type IN {'%@','%@','%@'}",PUSH_TYPE_REQUEST_ACCEPTED, PUSH_TYPE_INVITE_ACCEPTED,PUSH_TYPE_RATED]];
-    for (LocalNotif * notif in targetNotifs) {
+    RLMResults<KamanLocalNotif *> *targetNotifs = [KamanLocalNotif objectsWhere:[NSString stringWithFormat:@"type IN {'%@','%@','%@'}",PUSH_TYPE_REQUEST_ACCEPTED, PUSH_TYPE_INVITE_ACCEPTED,PUSH_TYPE_RATED]];
+    for (KamanLocalNotif * notif in targetNotifs) {
             [otherNotifs addObject:notif];
     }
 
@@ -89,11 +89,11 @@ NSMutableArray * otherNotifs;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OtherNotifsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     UIFont  * font = [UIFont systemFontOfSize:13.0];
-    LocalNotif * notif = [otherNotifs objectAtIndex:indexPath.row];
+    KamanLocalNotif * notif = [otherNotifs objectAtIndex:indexPath.row];
     NSString * query = [NSString stringWithFormat:@"kamanId = '%@' AND type = '%@'", notif.kamanId ,notif.type];
     [cell.titleLabel setText:notif.data];
     [cell.titleLabel setFont:font];
-    RLMResults<LocalNotif *> *notifs = [LocalNotif objectsWhere:query];
+    RLMResults<KamanLocalNotif *> *notifs = [KamanLocalNotif objectsWhere:query];
     if([notifs count] == 0) {
         [cell.titleLabel setTextColor:[UIColor blackColor]];
     } else {

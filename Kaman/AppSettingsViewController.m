@@ -145,24 +145,24 @@
 -(IBAction)switchedValueChanged:(id)sender
 {
     if(self.requestsSwitch == sender) {
-        [Utils updateCurrentPFUserColumn:@"NotifyRequests" withValue:[NSNumber numberWithBool: [self.requestsSwitch isOn]] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"NotifyRequests" withValue:[NSNumber numberWithBool: [self.requestsSwitch isOn]] onCallBack:^(id result) {
             [self updateUI];
         }];
     }
     if(self.invitationsSwitch == sender) {
-        [Utils updateCurrentPFUserColumn:@"NotifyInvites" withValue:[NSNumber numberWithBool: [self.invitationsSwitch isOn]] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"NotifyInvites" withValue:[NSNumber numberWithBool: [self.invitationsSwitch isOn]] onCallBack:^(id result) {
             [self updateUI];
         }];
     }
     
     if(self.ratingsSwitch == sender) {
-        [Utils updateCurrentPFUserColumn:@"NotifyRatings" withValue:[NSNumber numberWithBool: [self.ratingsSwitch isOn]] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"NotifyRatings" withValue:[NSNumber numberWithBool: [self.ratingsSwitch isOn]] onCallBack:^(id result) {
             [self updateUI];
         }];
     }
     
     if(self.messagesSwitch == sender) {
-        [Utils updateCurrentPFUserColumn:@"NotifyMessages" withValue:[NSNumber numberWithBool: [self.messagesSwitch isOn]] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"NotifyMessages" withValue:[NSNumber numberWithBool: [self.messagesSwitch isOn]] onCallBack:^(id result) {
             [self updateUI];
         }];
     }
@@ -241,7 +241,7 @@
                              } else {
                                  [self.updateEmailButton setTitle:email forState:UIControlStateNormal];
                                  [self.updateEmailButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-                                 [Utils updateCurrentPFUserColumn:@"email" withValue:email onCallBack:^(id result) {
+                                 [[PFUser currentUser] updateUserColumn:@"email" withValue:email onCallBack:^(id result) {
                                      [self updateUI];
                                  }];
                              }

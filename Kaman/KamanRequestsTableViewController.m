@@ -9,7 +9,7 @@
 #import "KamanRequestsTableViewController.h"
 #import "KamanNotificationTableViewCell.h"
 #import "PFUser+Kamaner.h"
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 #import "Utils.h"
 #import "UserProfileViewController.h"
 
@@ -121,13 +121,13 @@ UIRefreshControl *kamanReqsRefreshControl;
             [self.kamanRequests removeObject:kamanReq];
             [Utils setTitle:[NSString stringWithFormat: @"Requests (%lu)", [self.kamanRequests count]] withColor:MyOrangeColor andSubTitle:self.kaman != nil ? [self.kaman objectForKey:@"Name"] :@"Party" withColor:MyOrangeColor onNavigationController:self];
             
-            [requestingUser addUniqueObjectsFromArray:[NSArray arrayWithObject:self.kaman.objectId] forKey:@"KamansAttended"];
+            /*[requestingUser addUniqueObjectsFromArray:[NSArray arrayWithObject:self.kaman.objectId] forKey:@"KamansAttended"];
             [requestingUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if(error) {
                     [requestingUser saveEventually];
                     NSLog(@"Error updating KamansAttended Invite: %@",error.localizedDescription);
                 }
-            }];
+            }];*/
             if([requestingUser notifyRequests]) {
                 [Utils sendPushFor:PUSH_TYPE_REQUEST_ACCEPTED toUser:requestingUser withMessage:[NSString stringWithFormat: @"Congratulations! Your request to attend '%@' is accepted. You can now see the address of the event.",[self.kaman objectForKey:@"Name"]] ForKaman:self.kaman];
             }
@@ -180,7 +180,7 @@ UIRefreshControl *kamanReqsRefreshControl;
     
     UserProfileViewController *someViewController = [storyboard instantiateViewControllerWithIdentifier:@"user_profile"];
     someViewController.users = [NSMutableArray arrayWithObject:user];
-    someViewController.kaman = self.kaman;
+    someViewController.kamanObject = self.kaman;
     
     [Utils setTitle:isHost ? @"Host Profile" : @"Requesting Attendee Profile" withColor:MyOrangeColor andSubTitle:self.kaman != nil ? [self.kaman objectForKey:@"Name"] :@"Party" withColor:MyOrangeColor onNavigationController:someViewController];
     
@@ -232,7 +232,7 @@ UIRefreshControl *kamanReqsRefreshControl;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
- return [self.kamanRequests count];
+  return [self.kamanRequests count];
 }
 
 

@@ -23,7 +23,7 @@
 @end
 
 @implementation UserProfileViewController
-
+@synthesize kamanObject;
 
 - (IBAction)exit:(id)sender {
     
@@ -198,7 +198,7 @@
             }
         }
 
-        NSString * age = [Utils getPFUserAgeAsString:kamaner onNoAge:ageRange != nil ? range : @"<Age Hidded>"];
+        NSString * age = [kamaner userAgeAsStringOnNoAge:ageRange != nil ? range : @"<Age Hidded>"];
         [cell.kamanNameLabel setText:[@"<Age Hidden>" isEqualToString:age ] ? [kamaner displayName] :[NSString stringWithFormat:@"%@, %@",[kamaner displayName],age]];
         
     

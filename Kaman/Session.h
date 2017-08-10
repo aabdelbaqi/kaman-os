@@ -14,5 +14,4 @@
 extern LocalPlace *currentLocality;
 extern NSInteger kamansViewed;
 extern ParallaxHeaderView *profileHeaderView, *menuHeaderView;
-#define DEV_MODE 0
 #endif /* Session_h */

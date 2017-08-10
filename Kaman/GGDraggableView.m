@@ -97,7 +97,7 @@ DismissCallback onDismisscallback;
     CGPoint velocity = [gestureRecognizer velocityInView:gestureRecognizer.view];
     CGFloat vectorDistance = sqrtf(powf(velocity.x, 2)+powf(velocity.y, 2));
     
-    NSLog(@"Y=%f, X=%f",yDistance,xDistance);
+   // NSLog(@"Y=%f, X=%f",yDistance,xDistance);
     
     if(yDistance > 5.0 || yDistance < -300.0) {
         [self resetViewPositionAndTransformations];

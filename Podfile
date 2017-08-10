@@ -20,6 +20,9 @@ target 'Kaman' do
    pod 'TSMessages'
    pod 'NYTPhotoViewer'
    pod 'DateTools'
+   pod 'Fabric'
+   pod 'Crashlytics'
+   pod 'CWStatusBarNotification', '~> 2.3.4'
 end
 
 target 'KamanTests' do

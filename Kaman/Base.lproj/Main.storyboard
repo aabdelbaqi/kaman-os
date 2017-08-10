@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="22d-WA-EHc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="22d-WA-EHc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -64,13 +64,23 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We don't post anything on Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="La9-9O-b2V">
+                                <rect key="frame" x="20" y="449" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Utu-mK-tBi" firstAttribute="top" secondItem="QFt-N3-Zn3" secondAttribute="bottom" constant="66" id="7vh-TW-J39"/>
                             <constraint firstItem="9Rq-em-J9P" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="78" id="81j-Ph-TKn"/>
                             <constraint firstItem="9Rq-em-J9P" firstAttribute="trailing" secondItem="Zhe-nT-OWE" secondAttribute="trailing" constant="-1" id="9hI-E4-BEa"/>
+                            <constraint firstItem="La9-9O-b2V" firstAttribute="top" secondItem="QFt-N3-Zn3" secondAttribute="bottom" constant="8" symbolic="YES" id="Fqy-fP-dTq"/>
+                            <constraint firstItem="La9-9O-b2V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Ijo-LE-Bcv"/>
+                            <constraint firstItem="La9-9O-b2V" firstAttribute="centerX" secondItem="QFt-N3-Zn3" secondAttribute="centerX" id="KvC-L1-02w"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QFt-N3-Zn3" secondAttribute="bottom" constant="127" id="R7W-9f-YQn"/>
+                            <constraint firstItem="Utu-mK-tBi" firstAttribute="top" secondItem="La9-9O-b2V" secondAttribute="bottom" constant="37" id="SaK-26-NGY"/>
                             <constraint firstItem="Zhe-nT-OWE" firstAttribute="leading" secondItem="9Rq-em-J9P" secondAttribute="leading" constant="-1" id="WmE-iR-nzb"/>
                             <constraint firstItem="9Rq-em-J9P" firstAttribute="bottom" secondItem="Zhe-nT-OWE" secondAttribute="bottom" constant="-7" id="XGZ-rk-k6G"/>
                             <constraint firstAttribute="bottom" secondItem="Utu-mK-tBi" secondAttribute="bottom" constant="20" symbolic="YES" id="dXQ-zh-iSM"/>
@@ -92,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-171.19999999999999" y="370.14666666666665"/>
+            <point key="canvasLocation" x="-172" y="370"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="nfy-2o-ztf">
@@ -847,10 +857,10 @@
             </objects>
             <point key="canvasLocation" x="1116.2666666666667" y="394.75999999999999"/>
         </scene>
-        <!--Invite Kamans View Controller-->
+        <!--Invite Kamaners View Controller-->
         <scene sceneID="iec-TW-wjT">
             <objects>
-                <tableViewController storyboardIdentifier="invite_kamans" id="D1t-IA-F9s" customClass="InviteKamansViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="invite_kamans" id="D1t-IA-F9s" customClass="InviteKamanersViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="60" id="xvT-vO-Uh0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

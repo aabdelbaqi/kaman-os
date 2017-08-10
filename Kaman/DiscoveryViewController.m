@@ -92,10 +92,10 @@
     {
         //The user hasn't ended using the slider yet.
     } else {
-        [Utils updateCurrentPFUserColumn:@"DiscoveryAgeMin" withValue:[NSNumber numberWithInt:minAge] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"DiscoveryAgeMin" withValue:[NSNumber numberWithInt:minAge] onCallBack:^(id result) {
             
         }];
-        [Utils updateCurrentPFUserColumn:@"DiscoveryAgeMax" withValue:[NSNumber numberWithInt:maxAge] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"DiscoveryAgeMax" withValue:[NSNumber numberWithInt:maxAge] onCallBack:^(id result) {
             
         }];
     }
@@ -115,7 +115,7 @@
     {
         //The user hasn't ended using the slider yet.
     } else {
-        [Utils updateCurrentPFUserColumn:@"DiscoveryPerimeter" withValue:[NSNumber numberWithInt:distance] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"DiscoveryPerimeter" withValue:[NSNumber numberWithInt:distance] onCallBack:^(id result) {
             
         }];
     }
@@ -157,13 +157,13 @@
 {
     
     if(self.discoverFriendsSwitch == sender) {
-        [Utils updateCurrentPFUserColumn:@"DiscoverFriendsOnly" withValue:[NSNumber numberWithBool: [self.discoverFriendsSwitch isOn]] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"DiscoverFriendsOnly" withValue:[NSNumber numberWithBool: [self.discoverFriendsSwitch isOn]] onCallBack:^(id result) {
             [self updateUI];
         }];
     }
     
     if(self.visibilitySwitch == sender) {
-        [Utils updateCurrentPFUserColumn:@"Visibility" withValue:[NSNumber numberWithBool: [self.visibilitySwitch isOn]] onCallBack:^(id result) {
+        [[PFUser currentUser] updateUserColumn:@"Visibility" withValue:[NSNumber numberWithBool: [self.visibilitySwitch isOn]] onCallBack:^(id result) {
             [self updateUI];
         }];
     }

@@ -6,7 +6,7 @@
 //  Copyright © 2015 Riad & Co. All rights reserved.
 //
 
-#import "InviteKamansViewController.h"
+#import "InviteKamanersViewController.h"
 #import "PhotosKamanTableViewCell.h"
 #import "DetailKamanTableViewCell.h"
 #import "Utils.h"
@@ -15,25 +15,35 @@
 
 #define NO_MORE  @"No more Kamaners to invite."
 
-@interface InviteKamansViewController ()
+@interface InviteKamanersViewController ()
 @property (nonatomic) NSString * status;
-@property (nonatomic) NSMutableArray * initialInvites;
+@property BOOL devMode;
+@property (nonatomic) NSMutableArray * initialInvitedAndRequesters;
 @end
 
 UIRefreshControl *kamanersRefreshControl;
-@implementation InviteKamansViewController
-
+@implementation InviteKamanersViewController
 
 - (IBAction)exit:(id)sender {
     
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [PFConfig getConfigInBackgroundWithBlock:^(PFConfig *config, NSError *error) {
+        if(config) {
+            NSNumber *devModeNSNumber = [config objectForKey: @"DevMode"];
+            _devMode = [devModeNSNumber boolValue];
+        }
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [Utils setTitle:@"Invite Kamaners" withColor:MyOrangeColor andSubTitle:self.kaman != nil ? [self.kaman objectForKey:@"Name"] :@"Party" withColor:MyOrangeColor onNavigationController:self];
+    [Utils setTitle:@"Invite Kamaners" withColor:MyOrangeColor andSubTitle:self.kamanObject != nil ? [self.kamanObject objectForKey:@"Name"] :@"Party" withColor:MyOrangeColor onNavigationController:self];
     
     kamanersRefreshControl = [[UIRefreshControl alloc]init];
   //  [self.tableView addSubview:kamanersRefreshControl];
@@ -54,25 +64,27 @@ UIRefreshControl *kamanersRefreshControl;
 
 -(void) initInitialInvitesThen:(ResultCallback) callback
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"KamanInvite"];
-    [query whereKey:@"Kaman" equalTo:self.kaman];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if(!error) {
-            self.initialInvites = [NSMutableArray new];
-            if([objects count] > 0) {
-                for (PFObject * obj in objects) {
-                    PFUser * invited = [obj objectForKey:@"InvitedUser"];
-                    [self.initialInvites addObject:invited.objectId];
-                }
-            }
+    
+    [Utils invitesAndRequestsForKaman:self.kamanObject onSuccess:^(NSArray *invites, NSArray *requests) {
+        self.initialInvitedAndRequesters = [NSMutableArray new];
+        
+        for (NSString* request in requests)  {
+            [self.initialInvitedAndRequesters addObject:request];
+        }
+        
+        for (NSString* invite in invites)  {
+            [self.initialInvitedAndRequesters addObject:invite];
         }
         
         if(callback) {
-            callback(nil);
+            callback(self.initialInvitedAndRequesters);
         }
         
+    } onError:^(NSError *error) {
+        if(callback) {
+            callback(self.initialInvitedAndRequesters);
+        }
     }];
-
 }
 
 
@@ -83,11 +95,11 @@ UIRefreshControl *kamanersRefreshControl;
     [kamanersRefreshControl beginRefreshing];
     
     PFQuery *query = [PFUser query];
-    if(self.initialInvites) {
-        [query whereKey:@"objectId" notContainedIn:self.initialInvites];
+    if(self.initialInvitedAndRequesters) {
+        [query whereKey:@"objectId" notContainedIn:self.initialInvitedAndRequesters];
     }
     [query whereKey:@"objectId" notEqualTo:[PFUser currentUser].objectId]; // exclude current user
-    if(DEV_MODE == 0) {
+    if(self.devMode ==  false) {
          // Interested in locations near user.
         [query whereKey:@"LastKnownLocation" nearGeoPoint:[PFGeoPoint geoPointWithLatitude:currentLocality.lat longitude:currentLocality.lon] withinKilometers:[[PFUser currentUser] discoveryPerimeter].intValue];
     }
@@ -117,100 +129,39 @@ UIRefreshControl *kamanersRefreshControl;
 
 
 
--(void) doInviteFriend
+-(void) doInviteFriend:(PFUser*) kamaner
 {
-    PFUser *kamaner = [self.users firstObject];
-    
-    PFRelation *relation = [self.kaman relationForKey:@"Invitations"];
-    
-    PFObject *kamanRequest = [PFObject objectWithClassName:@"KamanInvite"];
-    [kamanRequest setObject:kamaner forKey:@"InvitedUser"];
-    [kamanRequest setObject:self.kaman forKey:@"Kaman"];
-    [kamanRequest setObject:[NSNumber numberWithBool:NO] forKey:@"Accepted"];
-    [kamanRequest saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        
-        if (!error) {
-            [relation addObject:kamanRequest];
-            
-            [self.kaman saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                if(!error) {
-                    [kamaner addUniqueObjectsFromArray:[NSArray arrayWithObject:self.kaman.objectId] forKey:@"InvitedKamans"];
-                    [kamaner saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                        if(error) {
-                            [kamaner saveEventually];
-                            NSLog(@"Error saving user liked kaman: %@",error.localizedDescription);
-                        }
-                    }];
-                    [self.initialInvites addObject:kamaner.objectId];
-                    
-                    if([kamaner notifyInvites]) {
-                        [Utils sendPushFor:PUSH_TYPE_INVITED toUser:kamaner withMessage:[NSString stringWithFormat: @"You have been invited to attend '%@'. Looks like it's happening.",[self.kaman objectForKey:@"Name"]] ForKaman:self.kaman];
-                    }
-                } else {
-                    NSLog(@"Error making Kaman Invite: %@",error.localizedDescription);
-                    [self.kaman saveEventually];
-                    [self.initialInvites addObject:kamaner.objectId];
-                    
-                }
-            }];
-            
-        } else {
-            [Utils showMessageHUDInView:self.view withMessage:error.localizedDescription afterError:YES];
+    if(!kamaner) {
+        return;
+    }
+    [kamaner inviteToKaman:self.kamanObject onCallBack:^(id result) {
+        PFObject *invite = result;
+         NSLog(@"%@ invited with ID: ",invite.objectId);
+        if([kamaner notifyInvites]) {
+            [Utils sendPushFor:PUSH_TYPE_INVITED toUser:kamaner withMessage:[NSString stringWithFormat: @"You have been invited to attend '%@'. Looks like it's happening.",[self.kamanObject objectForKey:@"Name"]] ForKaman:self.kamanObject];
         }
-        
+    } onError:^(NSError *error) {
+         [Utils showStatusNotificationWithMessage:[NSString stringWithFormat:@"Error: %@ ", error.localizedDescription] isError:YES];
     }];
-    
-    
 }
 
 -(void) inviteFriend
 {
     
-    PFObject *kamaner = [self.users firstObject];
-    
-    if (self.initialInvites) {
-        if([self.initialInvites containsObject:kamaner.objectId]) {
-            [TSMessage showNotificationWithTitle:[self.kaman objectForKey:@"Name"] subtitle:@"You already invited this Kamaner" type:TSMessageNotificationTypeWarning];
-        } else {
-            NSArray * liked = [kamaner objectForKey:@"LikedKamans"];
-            if(![liked containsObject:self.kaman.objectId]) { // only if user has not liked it already
-                [self doInviteFriend];
-            }
+    PFUser *kamaner = [self.users firstObject];
+    [kamaner hasBeenInvitedOrHasRequestedToAttendKaman:self.kamanObject onCallBack:^(BOOL result) {
+        if (result) {
+            NSLog(@"%@ has already been invited.",[kamaner displayName]);
+             [Utils showStatusNotificationWithMessage:[NSString stringWithFormat:@"%@ already requested or been invited to attend this Kaman",[kamaner displayName]] isError:NO];
+        }else {
+            NSLog(@"%@ has not been invited.",[kamaner displayName]);
+            [self doInviteFriend:kamaner];
         }
         
-        
-        [self.users removeObjectAtIndex:0];
-        [self.tableView reloadData];
-        
-        return;
-    }
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"KamanInvite"];
-    [query whereKey:@"Kaman" equalTo:self.kaman];
-    [query includeKey:@"InvitedUser"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if(!error) {
-            self.initialInvites = [NSMutableArray new];
-            if([objects count] > 0) {
-                for (PFObject * obj in objects) {
-                    PFUser * invited = [obj objectForKey:@"InvitedUser"];
-                    [self.initialInvites addObject:invited.objectId];
-                }
-            }
-            if([self.initialInvites containsObject:kamaner.objectId]) {
-                [TSMessage showNotificationWithTitle:[self.kaman objectForKey:@"Name"] subtitle:@"You already invited this Kamaner" type:TSMessageNotificationTypeWarning];
-            } else {
-                NSArray * liked = [kamaner objectForKey:@"LikedKamans"];
-                if(![liked containsObject:self.kaman.objectId]) { // only if user has not liked it already
-                    [self doInviteFriend];
-                }
-            }
-        } else {
-            [Utils showMessageHUDInView:self.view withMessage:error.localizedDescription afterError:YES];
-        }
-        
+    } onError:^(NSError *error) {
+        [Utils showStatusNotificationWithMessage:[NSString stringWithFormat:@"Error: %@ ", error.localizedDescription] isError:YES];
     }];
-    
+
     [self.users removeObjectAtIndex:0];
     [self.tableView reloadData];
     

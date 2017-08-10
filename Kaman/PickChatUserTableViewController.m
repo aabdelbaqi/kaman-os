@@ -10,7 +10,7 @@
 #import "MessagesViewController.h"
 #import "Utils.h"
 #import "RateUserTableViewCell.h"
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 
 @interface PickChatUserTableViewController ()
 @property NSMutableArray *users;
@@ -176,7 +176,7 @@
     RateUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     PFUser * kamanUser =  [self.users objectAtIndex:indexPath.row];
     
-    RLMResults *notifs = [LocalNotif objectsWhere:
+    RLMResults *notifs = [KamanLocalNotif objectsWhere:
                           [NSString stringWithFormat: @"kamanId = '%@' AND type = '%@' AND senderId = '%@'",self.kaman.objectId,PUSH_TYPE_CHAT_MESSAGE, kamanUser.objectId]];
     
     cell.rate0Btn.badgeView.badgeValue = [notifs count];

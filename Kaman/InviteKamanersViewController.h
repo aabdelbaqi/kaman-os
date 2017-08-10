@@ -10,8 +10,6 @@
 #import "Utils.h"
 #import "UserProfileViewController.h"
 
-@interface InviteKamansViewController : UserProfileViewController
-
-@property  PFObject *kaman;
+@interface InviteKamanersViewController : UserProfileViewController
 
 @end

@@ -11,10 +11,10 @@
 
 @interface UserProfileViewController : UITableViewController
 @property NSMutableArray *users;
-@property PFObject *kaman;
+
 @property BOOL showButtons, headerPannable;
 -(void)acceptClicked;
 -(void)declineClicked;
-
+@property PFObject *kamanObject;
 
 @end

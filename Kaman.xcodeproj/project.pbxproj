@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5FD122B3840622C431802B5D /* Pods_Kaman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 892E2571493968FC8D525B74 /* Pods_Kaman.framework */; };
+		27279BB42A30884D8682657D /* Pods_KamanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE801CCF0A6EB3496B8166D7 /* Pods_KamanUITests.framework */; };
+		3A45855FB2FA36D5805120AA /* Pods_Kaman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5BD273FD4B6776C4FB3F26B /* Pods_Kaman.framework */; };
+		6A3B73FB1D5B347A33C697CC /* Pods_KamanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE61671574B9C24929CCEAC1 /* Pods_KamanTests.framework */; };
 		D11185191CB44D920070BE24 /* OtherNotifsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D11185181CB44D920070BE24 /* OtherNotifsTableViewCell.m */; };
 		D111851B1CB450090070BE24 /* OtherNotifsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D111851A1CB450090070BE24 /* OtherNotifsTableViewCell.xib */; };
 		D1682D171CB26FC100B11850 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D161CB26FC100B11850 /* main.m */; };
@@ -41,7 +43,7 @@
 		D1682DE81CB2948100B11850 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D6B1CB2948000B11850 /* HomeViewController.m */; };
 		D1682DE91CB2948100B11850 /* HostKamanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D6D1CB2948000B11850 /* HostKamanViewController.m */; };
 		D1682DEA1CB2948100B11850 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D6F1CB2948000B11850 /* InviteFriendsViewController.m */; };
-		D1682DEB1CB2948100B11850 /* InviteKamansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D711CB2948000B11850 /* InviteKamansViewController.m */; };
+		D1682DEB1CB2948100B11850 /* InviteKamanersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D711CB2948000B11850 /* InviteKamanersViewController.m */; };
 		D1682DEC1CB2948100B11850 /* JTSAnimatedGIFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D731CB2948000B11850 /* JTSAnimatedGIFUtility.m */; };
 		D1682DED1CB2948100B11850 /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D751CB2948000B11850 /* JTSImageInfo.m */; };
 		D1682DEE1CB2948100B11850 /* JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D771CB2948000B11850 /* JTSImageViewController.m */; };
@@ -56,7 +58,7 @@
 		D1682DF71CB2948100B11850 /* KamanRequestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D851CB2948000B11850 /* KamanRequestsTableViewController.m */; };
 		D1682DF81CB2948100B11850 /* KamansTableEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D871CB2948000B11850 /* KamansTableEmptyView.m */; };
 		D1682DF91CB2948100B11850 /* KamansTableEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1682D881CB2948000B11850 /* KamansTableEmptyView.xib */; };
-		D1682DFA1CB2948100B11850 /* LocalNotif.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D8A1CB2948000B11850 /* LocalNotif.m */; };
+		D1682DFA1CB2948100B11850 /* KamanLocalNotif.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D8A1CB2948000B11850 /* KamanLocalNotif.m */; };
 		D1682DFB1CB2948100B11850 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D8C1CB2948000B11850 /* LoginViewController.m */; };
 		D1682DFC1CB2948100B11850 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D8E1CB2948000B11850 /* MenuViewController.m */; };
 		D1682DFD1CB2948100B11850 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682D901CB2948000B11850 /* MessagesViewController.m */; };
@@ -105,12 +107,6 @@
 		D1682E401CB299DC00B11850 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = D1682E3F1CB299DC00B11850 /* Constants.m */; };
 		D1682E421CB29A6400B11850 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E411CB29A6400B11850 /* SystemConfiguration.framework */; };
 		D1682E441CB29A7800B11850 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E431CB29A7800B11850 /* MessageUI.framework */; };
-		D1682E461CB29B3000B11850 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E451CB29B3000B11850 /* Bolts.framework */; };
-		D1682E491CB29B3800B11850 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E471CB29B3800B11850 /* FBSDKCoreKit.framework */; };
-		D1682E4A1CB29B3800B11850 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E481CB29B3800B11850 /* FBSDKLoginKit.framework */; };
-		D1682E4C1CB29B6100B11850 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E4B1CB29B6100B11850 /* ParseFacebookUtilsV4.framework */; };
-		D1682E4E1CB29FB800B11850 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E4D1CB29FB800B11850 /* FBSDKShareKit.framework */; };
-		D1682E501CB2A2DA00B11850 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E4F1CB2A2DA00B11850 /* FBSDKMessengerShareKit.framework */; };
 		D1682E531CB2A30D00B11850 /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E511CB2A30D00B11850 /* FBSDKMessengerShareKit.framework */; };
 		D1682E541CB2A30E00B11850 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1682E521CB2A30D00B11850 /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
@@ -133,9 +129,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4FA8EA17FF48A3AA1DED6191 /* Pods-Kaman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kaman.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kaman/Pods-Kaman.release.xcconfig"; sourceTree = "<group>"; };
-		892E2571493968FC8D525B74 /* Pods_Kaman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kaman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6A5837261A477C7AC691248 /* Pods-Kaman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kaman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kaman/Pods-Kaman.debug.xcconfig"; sourceTree = "<group>"; };
+		6F48A726E03A250EEEBF8C53 /* Pods-KamanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KamanTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KamanTests/Pods-KamanTests.release.xcconfig"; sourceTree = "<group>"; };
+		78B30632CC74A02D2FA55F7B /* Pods-KamanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KamanUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KamanUITests/Pods-KamanUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8216023C5BCFB064FBA8738F /* Pods-KamanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KamanUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KamanUITests/Pods-KamanUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		865F572FE95595450BFCBF60 /* Pods-Kaman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kaman.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kaman/Pods-Kaman.release.xcconfig"; sourceTree = "<group>"; };
+		B41E20D928D3A5328DA1C271 /* Pods-KamanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KamanTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KamanTests/Pods-KamanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BE801CCF0A6EB3496B8166D7 /* Pods_KamanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KamanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5BD273FD4B6776C4FB3F26B /* Pods_Kaman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kaman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11185171CB44D920070BE24 /* OtherNotifsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherNotifsTableViewCell.h; sourceTree = "<group>"; };
 		D11185181CB44D920070BE24 /* OtherNotifsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherNotifsTableViewCell.m; sourceTree = "<group>"; };
 		D111851A1CB450090070BE24 /* OtherNotifsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OtherNotifsTableViewCell.xib; sourceTree = "<group>"; };
@@ -192,8 +192,8 @@
 		D1682D6D1CB2948000B11850 /* HostKamanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostKamanViewController.m; sourceTree = "<group>"; };
 		D1682D6E1CB2948000B11850 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
 		D1682D6F1CB2948000B11850 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendsViewController.m; sourceTree = "<group>"; };
-		D1682D701CB2948000B11850 /* InviteKamansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteKamansViewController.h; sourceTree = "<group>"; };
-		D1682D711CB2948000B11850 /* InviteKamansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteKamansViewController.m; sourceTree = "<group>"; };
+		D1682D701CB2948000B11850 /* InviteKamanersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteKamanersViewController.h; sourceTree = "<group>"; };
+		D1682D711CB2948000B11850 /* InviteKamanersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteKamanersViewController.m; sourceTree = "<group>"; };
 		D1682D721CB2948000B11850 /* JTSAnimatedGIFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSAnimatedGIFUtility.h; sourceTree = "<group>"; };
 		D1682D731CB2948000B11850 /* JTSAnimatedGIFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTSAnimatedGIFUtility.m; sourceTree = "<group>"; };
 		D1682D741CB2948000B11850 /* JTSImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSImageInfo.h; sourceTree = "<group>"; };
@@ -217,8 +217,8 @@
 		D1682D861CB2948000B11850 /* KamansTableEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KamansTableEmptyView.h; sourceTree = "<group>"; };
 		D1682D871CB2948000B11850 /* KamansTableEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KamansTableEmptyView.m; sourceTree = "<group>"; };
 		D1682D881CB2948000B11850 /* KamansTableEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KamansTableEmptyView.xib; sourceTree = "<group>"; };
-		D1682D891CB2948000B11850 /* LocalNotif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNotif.h; sourceTree = "<group>"; };
-		D1682D8A1CB2948000B11850 /* LocalNotif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNotif.m; sourceTree = "<group>"; };
+		D1682D891CB2948000B11850 /* KamanLocalNotif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KamanLocalNotif.h; sourceTree = "<group>"; };
+		D1682D8A1CB2948000B11850 /* KamanLocalNotif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KamanLocalNotif.m; sourceTree = "<group>"; };
 		D1682D8B1CB2948000B11850 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D1682D8C1CB2948000B11850 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D1682D8D1CB2948000B11850 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -294,14 +294,10 @@
 		D1682E3F1CB299DC00B11850 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		D1682E411CB29A6400B11850 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D1682E431CB29A7800B11850 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		D1682E451CB29B3000B11850 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Library/Developer/Xcode/DerivedData/Kaman-blnvcaqqsiaglugntznvxbluhzno/Build/Products/Debug-iphonesimulator/Bolts.framework"; sourceTree = "<group>"; };
-		D1682E471CB29B3800B11850 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Library/Developer/Xcode/DerivedData/Kaman-blnvcaqqsiaglugntznvxbluhzno/Build/Products/Debug-iphonesimulator/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
-		D1682E481CB29B3800B11850 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Library/Developer/Xcode/DerivedData/Kaman-blnvcaqqsiaglugntznvxbluhzno/Build/Products/Debug-iphonesimulator/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
-		D1682E4B1CB29B6100B11850 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../Library/Developer/Xcode/DerivedData/Kaman-blnvcaqqsiaglugntznvxbluhzno/Build/Products/Debug-iphonesimulator/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
-		D1682E4D1CB29FB800B11850 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../Volumes/Macintosh HD/XCodeProjects/Kaman/FBSDKShareKit.framework"; sourceTree = "<group>"; };
-		D1682E4F1CB2A2DA00B11850 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = "../../../../Volumes/Macintosh HD/XCodeProjects/Kaman/FBSDKMessengerShareKit.framework"; sourceTree = "<group>"; };
-		D1682E511CB2A30D00B11850 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
-		D1682E521CB2A30D00B11850 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		D1682E511CB2A30D00B11850 /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = Kaman/FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
+		D1682E521CB2A30D00B11850 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Kaman/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		DE61671574B9C24929CCEAC1 /* Pods_KamanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KamanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFD06F738A694473857E53B8 /* Pods-Kaman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kaman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kaman/Pods-Kaman.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,17 +305,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1682E4C1CB29B6100B11850 /* ParseFacebookUtilsV4.framework in Frameworks */,
-				D1682E491CB29B3800B11850 /* FBSDKCoreKit.framework in Frameworks */,
 				D1682E531CB2A30D00B11850 /* FBSDKMessengerShareKit.framework in Frameworks */,
-				D1682E4A1CB29B3800B11850 /* FBSDKLoginKit.framework in Frameworks */,
-				D1682E501CB2A2DA00B11850 /* FBSDKMessengerShareKit.framework in Frameworks */,
-				D1682E4E1CB29FB800B11850 /* FBSDKShareKit.framework in Frameworks */,
 				D1682E541CB2A30E00B11850 /* FBSDKShareKit.framework in Frameworks */,
-				D1682E461CB29B3000B11850 /* Bolts.framework in Frameworks */,
 				D1682E441CB29A7800B11850 /* MessageUI.framework in Frameworks */,
 				D1682E421CB29A6400B11850 /* SystemConfiguration.framework in Frameworks */,
-				5FD122B3840622C431802B5D /* Pods_Kaman.framework in Frameworks */,
+				3A45855FB2FA36D5805120AA /* Pods_Kaman.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +317,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A3B73FB1D5B347A33C697CC /* Pods_KamanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,19 +325,307 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27279BB42A30884D8682657D /* Pods_KamanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C27BE3D471AB53278B777B8D /* Pods */ = {
+		213AC1B95ED98AC1B1E180F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A6A5837261A477C7AC691248 /* Pods-Kaman.debug.xcconfig */,
-				4FA8EA17FF48A3AA1DED6191 /* Pods-Kaman.release.xcconfig */,
+				EFD06F738A694473857E53B8 /* Pods-Kaman.debug.xcconfig */,
+				865F572FE95595450BFCBF60 /* Pods-Kaman.release.xcconfig */,
+				B41E20D928D3A5328DA1C271 /* Pods-KamanTests.debug.xcconfig */,
+				6F48A726E03A250EEEBF8C53 /* Pods-KamanTests.release.xcconfig */,
+				8216023C5BCFB064FBA8738F /* Pods-KamanUITests.debug.xcconfig */,
+				78B30632CC74A02D2FA55F7B /* Pods-KamanUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D1114BCB1D08169700F47D83 /* OtherNotifs */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D481CB2948000B11850 /* OtherNotifsTableViewController.h */,
+				D1682D491CB2948000B11850 /* OtherNotifsTableViewController.m */,
+				D1114BCC1D0816A300F47D83 /* Cells */,
+			);
+			name = OtherNotifs;
+			sourceTree = "<group>";
+		};
+		D1114BCC1D0816A300F47D83 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D11185171CB44D920070BE24 /* OtherNotifsTableViewCell.h */,
+				D11185181CB44D920070BE24 /* OtherNotifsTableViewCell.m */,
+				D111851A1CB450090070BE24 /* OtherNotifsTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		D1114BCD1D0816AE00F47D83 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D811CB2948000B11850 /* KamanNotificationTableViewCell.h */,
+				D1682D821CB2948000B11850 /* KamanNotificationTableViewCell.m */,
+				D1682D831CB2948000B11850 /* KamanNotificationTableViewCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		D1114BCE1D0816DA00F47D83 /* PFUser */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DA91CB2948000B11850 /* PFUser+Kamaner.h */,
+				D1682DAA1CB2948100B11850 /* PFUser+Kamaner.m */,
+			);
+			name = PFUser;
+			sourceTree = "<group>";
+		};
+		D1114BCF1D0816EC00F47D83 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DA31CB2948000B11850 /* NSString+Levenshtein.h */,
+				D1682DA41CB2948000B11850 /* NSString+Levenshtein.m */,
+			);
+			name = NSString;
+			sourceTree = "<group>";
+		};
+		D1114BD01D0816FA00F47D83 /* Kaman */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D4B1CB2948000B11850 /* PFObject+KamanCat.h */,
+				D1682D4C1CB2948000B11850 /* PFObject+KamanCat.m */,
+			);
+			name = Kaman;
+			sourceTree = "<group>";
+		};
+		D1114BD11D08170200F47D83 /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DC41CB2948100B11850 /* UIApplication+JTSImageViewController.h */,
+				D1682DC51CB2948100B11850 /* UIApplication+JTSImageViewController.m */,
+			);
+			name = UIApplication;
+			sourceTree = "<group>";
+		};
+		D1114BD21D08171200F47D83 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DC61CB2948100B11850 /* UIImage+ImageEffects.h */,
+				D1682DC71CB2948100B11850 /* UIImage+ImageEffects.m */,
+				D1682DC81CB2948100B11850 /* UIImage+JTSImageEffects.h */,
+				D1682DC91CB2948100B11850 /* UIImage+JTSImageEffects.m */,
+			);
+			name = UIImage;
+			sourceTree = "<group>";
+		};
+		D1114BD31D08171A00F47D83 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DCA1CB2948100B11850 /* UIView+MGBadgeView.h */,
+				D1682DCB1CB2948100B11850 /* UIView+MGBadgeView.m */,
+			);
+			name = UIView;
+			sourceTree = "<group>";
+		};
+		D1114BD41D08175600F47D83 /* PickChatUser */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DB01CB2948100B11850 /* PickChatUserTableViewController.h */,
+				D1682DB11CB2948100B11850 /* PickChatUserTableViewController.m */,
+			);
+			name = PickChatUser;
+			sourceTree = "<group>";
+		};
+		D1114BD51D08176D00F47D83 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DB71CB2948100B11850 /* RateUserTableViewCell.h */,
+				D1682DB81CB2948100B11850 /* RateUserTableViewCell.m */,
+				D1682DB91CB2948100B11850 /* RateUserTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		D1114BD61D08177800F47D83 /* FullView */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DAB1CB2948100B11850 /* PhotoFullViewController.h */,
+				D1682DAC1CB2948100B11850 /* PhotoFullViewController.m */,
+			);
+			name = FullView;
+			sourceTree = "<group>";
+		};
+		D1114BD71D0817A300F47D83 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D621CB2948000B11850 /* EditAccountViewController.h */,
+				D1682D631CB2948000B11850 /* EditAccountViewController.m */,
+			);
+			name = Edit;
+			sourceTree = "<group>";
+		};
+		D1114BD81D0817AA00F47D83 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DCC1CB2948100B11850 /* UserProfileViewController.h */,
+				D1682DCD1CB2948100B11850 /* UserProfileViewController.m */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		D1114BDA1D08199C00F47D83 /* KamanDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D7F1CB2948000B11850 /* KamanDetailsViewController.h */,
+				D1682D801CB2948000B11850 /* KamanDetailsViewController.m */,
+				D1114BDC1D081A4500F47D83 /* AttendeeCell */,
+				D1114BDD1D081A5400F47D83 /* BasicCell */,
+				D1114BDE1D081A6000F47D83 /* DetailCell */,
+			);
+			name = KamanDetails;
+			sourceTree = "<group>";
+		};
+		D1114BDB1D081A3500F47D83 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D861CB2948000B11850 /* KamansTableEmptyView.h */,
+				D1682D871CB2948000B11850 /* KamansTableEmptyView.m */,
+				D1682D881CB2948000B11850 /* KamansTableEmptyView.xib */,
+			);
+			name = EmptyView;
+			sourceTree = "<group>";
+		};
+		D1114BDC1D081A4500F47D83 /* AttendeeCell */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D551CB2948000B11850 /* AttendeeCollectionViewCell.h */,
+				D1682D561CB2948000B11850 /* AttendeeCollectionViewCell.m */,
+				D1682D571CB2948000B11850 /* AttendeeCollectionViewCell.xib */,
+			);
+			name = AttendeeCell;
+			sourceTree = "<group>";
+		};
+		D1114BDD1D081A5400F47D83 /* BasicCell */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D5A1CB2948000B11850 /* BasicKamansTableViewCell.h */,
+				D1682D5B1CB2948000B11850 /* BasicKamansTableViewCell.m */,
+				D1682D5C1CB2948000B11850 /* BasicKamansTableViewCell.xib */,
+			);
+			name = BasicCell;
+			sourceTree = "<group>";
+		};
+		D1114BDE1D081A6000F47D83 /* DetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D5D1CB2948000B11850 /* DetailKamanTableViewCell.h */,
+				D1682D5E1CB2948000B11850 /* DetailKamanTableViewCell.m */,
+				D1682D5F1CB2948000B11850 /* DetailKamanTableViewCell.xib */,
+			);
+			name = DetailCell;
+			sourceTree = "<group>";
+		};
+		D1114BDF1D081A7F00F47D83 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DD01CB2948100B11850 /* SWRevealViewController.h */,
+				D1682DD11CB2948100B11850 /* SWRevealViewController.m */,
+			);
+			name = SideMenu;
+			sourceTree = "<group>";
+		};
+		D1114BE01D081A8600F47D83 /* ParallaxHeader */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DA71CB2948000B11850 /* ParallaxHeaderView.h */,
+				D1682DA81CB2948000B11850 /* ParallaxHeaderView.m */,
+			);
+			name = ParallaxHeader;
+			sourceTree = "<group>";
+		};
+		D1114BE11D081A9100F47D83 /* BaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D501CB2948000B11850 /* AFTableViewCell.h */,
+				D1682D511CB2948000B11850 /* AFTableViewCell.m */,
+			);
+			name = BaseCell;
+			sourceTree = "<group>";
+		};
+		D1114BE21D081AA200F47D83 /* ActionButtons */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D7C1CB2948000B11850 /* KamanActionButtonsView.h */,
+				D1682D7D1CB2948000B11850 /* KamanActionButtonsView.m */,
+				D1682D7E1CB2948000B11850 /* KamanActionButtonsView.xib */,
+			);
+			name = ActionButtons;
+			sourceTree = "<group>";
+		};
+		D1114BE31D081AAD00F47D83 /* AutoCompleteTableView */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D581CB2948000B11850 /* AutocompletionTableView.h */,
+				D1682D591CB2948000B11850 /* AutocompletionTableView.m */,
+			);
+			name = AutoCompleteTableView;
+			sourceTree = "<group>";
+		};
+		D1114BE41D081ADA00F47D83 /* TextFieldValidator */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DC11CB2948100B11850 /* TextFieldValidator.h */,
+				D1682DC21CB2948100B11850 /* TextFieldValidator.m */,
+			);
+			name = TextFieldValidator;
+			sourceTree = "<group>";
+		};
+		D1114BE51D081AF800F47D83 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DBC1CB2948100B11850 /* Reachability.h */,
+				D1682DBD1CB2948100B11850 /* Reachability.m */,
+			);
+			name = Connection;
+			sourceTree = "<group>";
+		};
+		D1114BE61D081B0300F47D83 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				D1682DBE1CB2948100B11850 /* Session.h */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
+		D1114BE71D081B0E00F47D83 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D1682E3E1CB299DC00B11850 /* Constants.h */,
+				D1682E3F1CB299DC00B11850 /* Constants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		D1114BE81D081B4300F47D83 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D6E1CB2948000B11850 /* InviteFriendsViewController.h */,
+				D1682D6F1CB2948000B11850 /* InviteFriendsViewController.m */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
+		D1114BE91D081B8100F47D83 /* Kamaners */ = {
+			isa = PBXGroup;
+			children = (
+				D1682D701CB2948000B11850 /* InviteKamanersViewController.h */,
+				D1682D711CB2948000B11850 /* InviteKamanersViewController.m */,
+			);
+			name = Kamaners;
 			sourceTree = "<group>";
 		};
 		D1682D091CB26FBD00B11850 = {
@@ -356,8 +635,8 @@
 				D1682D2E1CB26FC100B11850 /* KamanTests */,
 				D1682D391CB26FC100B11850 /* KamanUITests */,
 				D1682D131CB26FBF00B11850 /* Products */,
-				C27BE3D471AB53278B777B8D /* Pods */,
 				DF2307C9E71302185545FDC4 /* Frameworks */,
+				213AC1B95ED98AC1B1E180F3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -374,19 +653,18 @@
 		D1682D141CB26FC100B11850 /* Kaman */ = {
 			isa = PBXGroup;
 			children = (
-				D1682E3E1CB299DC00B11850 /* Constants.h */,
-				D1682E3F1CB299DC00B11850 /* Constants.m */,
 				D1682D181CB26FC100B11850 /* AppDelegate.h */,
 				D1682D191CB26FC100B11850 /* AppDelegate.m */,
 				D1682D1E1CB26FC100B11850 /* Main.storyboard */,
 				D1682D211CB26FC100B11850 /* Assets.xcassets */,
 				D1682D231CB26FC100B11850 /* LaunchScreen.storyboard */,
+				D1114BDA1D08199C00F47D83 /* KamanDetails */,
 				D1682E281CB294B400B11850 /* Notifications */,
 				D1682E291CB294DE00B11850 /* Extensions */,
 				D1682E2A1CB2950200B11850 /* Terms */,
 				D1682E2B1CB2952E00B11850 /* Settings */,
 				D1682E381CB297B400B11850 /* Profile */,
-				D1682E2C1CB2955D00B11850 /* UIViews */,
+				D1682E2C1CB2955D00B11850 /* Views */,
 				D1682E341CB296E900B11850 /* Home */,
 				D1682E351CB296F500B11850 /* Host */,
 				D1682E331CB296D700B11850 /* Invite */,
@@ -437,16 +715,10 @@
 		D1682E281CB294B400B11850 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				D1682D481CB2948000B11850 /* OtherNotifsTableViewController.h */,
-				D1682D491CB2948000B11850 /* OtherNotifsTableViewController.m */,
-				D1682D811CB2948000B11850 /* KamanNotificationTableViewCell.h */,
-				D1682D821CB2948000B11850 /* KamanNotificationTableViewCell.m */,
-				D1682D831CB2948000B11850 /* KamanNotificationTableViewCell.xib */,
 				D1682DA11CB2948000B11850 /* NotificationsViewController.h */,
 				D1682DA21CB2948000B11850 /* NotificationsViewController.m */,
-				D11185171CB44D920070BE24 /* OtherNotifsTableViewCell.h */,
-				D11185181CB44D920070BE24 /* OtherNotifsTableViewCell.m */,
-				D111851A1CB450090070BE24 /* OtherNotifsTableViewCell.xib */,
+				D1114BCD1D0816AE00F47D83 /* Cell */,
+				D1114BCB1D08169700F47D83 /* OtherNotifs */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -454,20 +726,13 @@
 		D1682E291CB294DE00B11850 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D1682DA91CB2948000B11850 /* PFUser+Kamaner.h */,
-				D1682DAA1CB2948100B11850 /* PFUser+Kamaner.m */,
-				D1682DA31CB2948000B11850 /* NSString+Levenshtein.h */,
-				D1682DA41CB2948000B11850 /* NSString+Levenshtein.m */,
-				D1682D4B1CB2948000B11850 /* PFObject+KamanCat.h */,
-				D1682D4C1CB2948000B11850 /* PFObject+KamanCat.m */,
-				D1682DC41CB2948100B11850 /* UIApplication+JTSImageViewController.h */,
-				D1682DC51CB2948100B11850 /* UIApplication+JTSImageViewController.m */,
-				D1682DC61CB2948100B11850 /* UIImage+ImageEffects.h */,
-				D1682DC71CB2948100B11850 /* UIImage+ImageEffects.m */,
-				D1682DC81CB2948100B11850 /* UIImage+JTSImageEffects.h */,
-				D1682DC91CB2948100B11850 /* UIImage+JTSImageEffects.m */,
-				D1682DCA1CB2948100B11850 /* UIView+MGBadgeView.h */,
-				D1682DCB1CB2948100B11850 /* UIView+MGBadgeView.m */,
+				D1114BE41D081ADA00F47D83 /* TextFieldValidator */,
+				D1114BCE1D0816DA00F47D83 /* PFUser */,
+				D1114BCF1D0816EC00F47D83 /* NSString */,
+				D1114BD01D0816FA00F47D83 /* Kaman */,
+				D1114BD11D08170200F47D83 /* UIApplication */,
+				D1114BD21D08171200F47D83 /* UIImage */,
+				D1114BD31D08171A00F47D83 /* UIView */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -495,24 +760,18 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		D1682E2C1CB2955D00B11850 /* UIViews */ = {
+		D1682E2C1CB2955D00B11850 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D1682DD01CB2948100B11850 /* SWRevealViewController.h */,
-				D1682DD11CB2948100B11850 /* SWRevealViewController.m */,
-				D1682DA71CB2948000B11850 /* ParallaxHeaderView.h */,
-				D1682DA81CB2948000B11850 /* ParallaxHeaderView.m */,
-				D1682D501CB2948000B11850 /* AFTableViewCell.h */,
-				D1682D511CB2948000B11850 /* AFTableViewCell.m */,
-				D1682D7C1CB2948000B11850 /* KamanActionButtonsView.h */,
-				D1682D7D1CB2948000B11850 /* KamanActionButtonsView.m */,
-				D1682D7E1CB2948000B11850 /* KamanActionButtonsView.xib */,
-				D1682D581CB2948000B11850 /* AutocompletionTableView.h */,
-				D1682D591CB2948000B11850 /* AutocompletionTableView.m */,
+				D1114BDF1D081A7F00F47D83 /* SideMenu */,
+				D1114BE01D081A8600F47D83 /* ParallaxHeader */,
+				D1114BE11D081A9100F47D83 /* BaseCell */,
+				D1114BE21D081AA200F47D83 /* ActionButtons */,
+				D1114BE31D081AAD00F47D83 /* AutoCompleteTableView */,
 				D1682E391CB2980A00B11850 /* Range Slider */,
 				D1682E3A1CB2981800B11850 /* Draggable */,
 			);
-			name = UIViews;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		D1682E2D1CB295B000B11850 /* Realm */ = {
@@ -520,8 +779,8 @@
 			children = (
 				D1682DA51CB2948000B11850 /* Offline.h */,
 				D1682DA61CB2948000B11850 /* Offline.m */,
-				D1682D891CB2948000B11850 /* LocalNotif.h */,
-				D1682D8A1CB2948000B11850 /* LocalNotif.m */,
+				D1682D891CB2948000B11850 /* KamanLocalNotif.h */,
+				D1682D8A1CB2948000B11850 /* KamanLocalNotif.m */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -571,8 +830,6 @@
 		D1682E311CB296BB00B11850 /* Extra */ = {
 			isa = PBXGroup;
 			children = (
-				D1682E511CB2A30D00B11850 /* FBSDKMessengerShareKit.framework */,
-				D1682E521CB2A30D00B11850 /* FBSDKShareKit.framework */,
 				D1682D721CB2948000B11850 /* JTSAnimatedGIFUtility.h */,
 				D1682D731CB2948000B11850 /* JTSAnimatedGIFUtility.m */,
 				D1682D741CB2948000B11850 /* JTSImageInfo.h */,
@@ -597,10 +854,8 @@
 		D1682E331CB296D700B11850 /* Invite */ = {
 			isa = PBXGroup;
 			children = (
-				D1682D6E1CB2948000B11850 /* InviteFriendsViewController.h */,
-				D1682D6F1CB2948000B11850 /* InviteFriendsViewController.m */,
-				D1682D701CB2948000B11850 /* InviteKamansViewController.h */,
-				D1682D711CB2948000B11850 /* InviteKamansViewController.m */,
+				D1114BE81D081B4300F47D83 /* Friends */,
+				D1114BE91D081B8100F47D83 /* Kamaners */,
 			);
 			name = Invite;
 			sourceTree = "<group>";
@@ -608,22 +863,9 @@
 		D1682E341CB296E900B11850 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				D1682D7F1CB2948000B11850 /* KamanDetailsViewController.h */,
-				D1682D801CB2948000B11850 /* KamanDetailsViewController.m */,
+				D1114BDB1D081A3500F47D83 /* EmptyView */,
 				D1682D6A1CB2948000B11850 /* HomeViewController.h */,
 				D1682D6B1CB2948000B11850 /* HomeViewController.m */,
-				D1682D861CB2948000B11850 /* KamansTableEmptyView.h */,
-				D1682D871CB2948000B11850 /* KamansTableEmptyView.m */,
-				D1682D881CB2948000B11850 /* KamansTableEmptyView.xib */,
-				D1682D551CB2948000B11850 /* AttendeeCollectionViewCell.h */,
-				D1682D561CB2948000B11850 /* AttendeeCollectionViewCell.m */,
-				D1682D571CB2948000B11850 /* AttendeeCollectionViewCell.xib */,
-				D1682D5A1CB2948000B11850 /* BasicKamansTableViewCell.h */,
-				D1682D5B1CB2948000B11850 /* BasicKamansTableViewCell.m */,
-				D1682D5C1CB2948000B11850 /* BasicKamansTableViewCell.xib */,
-				D1682D5D1CB2948000B11850 /* DetailKamanTableViewCell.h */,
-				D1682D5E1CB2948000B11850 /* DetailKamanTableViewCell.m */,
-				D1682D5F1CB2948000B11850 /* DetailKamanTableViewCell.xib */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -649,10 +891,9 @@
 		D1682E371CB2973800B11850 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
-				D1682DB01CB2948100B11850 /* PickChatUserTableViewController.h */,
-				D1682DB11CB2948100B11850 /* PickChatUserTableViewController.m */,
 				D1682D8F1CB2948000B11850 /* MessagesViewController.h */,
 				D1682D901CB2948000B11850 /* MessagesViewController.m */,
+				D1114BD41D08175600F47D83 /* PickChatUser */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -662,10 +903,8 @@
 			children = (
 				D1682DB21CB2948100B11850 /* ProfileViewController.h */,
 				D1682DB31CB2948100B11850 /* ProfileViewController.m */,
-				D1682D621CB2948000B11850 /* EditAccountViewController.h */,
-				D1682D631CB2948000B11850 /* EditAccountViewController.m */,
-				D1682DCC1CB2948100B11850 /* UserProfileViewController.h */,
-				D1682DCD1CB2948100B11850 /* UserProfileViewController.m */,
+				D1114BD71D0817A300F47D83 /* Edit */,
+				D1114BD81D0817AA00F47D83 /* UserProfile */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -696,9 +935,7 @@
 		D1682E3B1CB2986600B11850 /* Rate */ = {
 			isa = PBXGroup;
 			children = (
-				D1682DB71CB2948100B11850 /* RateUserTableViewCell.h */,
-				D1682DB81CB2948100B11850 /* RateUserTableViewCell.m */,
-				D1682DB91CB2948100B11850 /* RateUserTableViewCell.xib */,
+				D1114BD51D08176D00F47D83 /* Cells */,
 				D1682DBA1CB2948100B11850 /* RateUserViewController.h */,
 				D1682DBB1CB2948100B11850 /* RateUserViewController.m */,
 			);
@@ -708,13 +945,11 @@
 		D1682E3C1CB2989C00B11850 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D1682DBC1CB2948100B11850 /* Reachability.h */,
-				D1682DBD1CB2948100B11850 /* Reachability.m */,
-				D1682DBE1CB2948100B11850 /* Session.h */,
-				D1682DC11CB2948100B11850 /* TextFieldValidator.h */,
-				D1682DC21CB2948100B11850 /* TextFieldValidator.m */,
 				D1682DCE1CB2948100B11850 /* Utils.h */,
 				D1682DCF1CB2948100B11850 /* Utils.m */,
+				D1114BE71D081B0E00F47D83 /* Constants */,
+				D1114BE51D081AF800F47D83 /* Connection */,
+				D1114BE61D081B0300F47D83 /* Session */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -722,8 +957,7 @@
 		D1682E3D1CB298AA00B11850 /* Photo */ = {
 			isa = PBXGroup;
 			children = (
-				D1682DAB1CB2948100B11850 /* PhotoFullViewController.h */,
-				D1682DAC1CB2948100B11850 /* PhotoFullViewController.m */,
+				D1114BD61D08177800F47D83 /* FullView */,
 				D1682DAD1CB2948100B11850 /* PhotosKamanTableViewCell.h */,
 				D1682DAE1CB2948100B11850 /* PhotosKamanTableViewCell.m */,
 				D1682DAF1CB2948100B11850 /* PhotosKamanTableViewCell.xib */,
@@ -734,15 +968,13 @@
 		DF2307C9E71302185545FDC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D1682E4F1CB2A2DA00B11850 /* FBSDKMessengerShareKit.framework */,
-				D1682E4D1CB29FB800B11850 /* FBSDKShareKit.framework */,
-				D1682E4B1CB29B6100B11850 /* ParseFacebookUtilsV4.framework */,
-				D1682E471CB29B3800B11850 /* FBSDKCoreKit.framework */,
-				D1682E481CB29B3800B11850 /* FBSDKLoginKit.framework */,
-				D1682E451CB29B3000B11850 /* Bolts.framework */,
+				D1682E511CB2A30D00B11850 /* FBSDKMessengerShareKit.framework */,
+				D1682E521CB2A30D00B11850 /* FBSDKShareKit.framework */,
 				D1682E431CB29A7800B11850 /* MessageUI.framework */,
 				D1682E411CB29A6400B11850 /* SystemConfiguration.framework */,
-				892E2571493968FC8D525B74 /* Pods_Kaman.framework */,
+				C5BD273FD4B6776C4FB3F26B /* Pods_Kaman.framework */,
+				DE61671574B9C24929CCEAC1 /* Pods_KamanTests.framework */,
+				BE801CCF0A6EB3496B8166D7 /* Pods_KamanUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -754,12 +986,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1682D3F1CB26FC200B11850 /* Build configuration list for PBXNativeTarget "Kaman" */;
 			buildPhases = (
-				B105520745D1CB464A889F85 /* Check Pods Manifest.lock */,
+				C71A172D056AEF30F1D7CC79 /* [CP] Check Pods Manifest.lock */,
 				D1682D0E1CB26FBF00B11850 /* Sources */,
 				D1682D0F1CB26FBF00B11850 /* Frameworks */,
 				D1682D101CB26FBF00B11850 /* Resources */,
-				4BC2D5011B236DDC79A067E9 /* Embed Pods Frameworks */,
-				7F42EE1F5D6B412254896456 /* Copy Pods Resources */,
+				D14ADF651D0871D8007D2B40 /* ShellScript */,
+				24332555350227B5662F22CE /* [CP] Embed Pods Frameworks */,
+				5261DD15EF1829481220F47F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -774,9 +1007,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1682D421CB26FC200B11850 /* Build configuration list for PBXNativeTarget "KamanTests" */;
 			buildPhases = (
+				BDF0126A8AE3C1F071692937 /* [CP] Check Pods Manifest.lock */,
 				D1682D271CB26FC100B11850 /* Sources */,
 				D1682D281CB26FC100B11850 /* Frameworks */,
 				D1682D291CB26FC100B11850 /* Resources */,
+				0FEFA6426E47CEA43EDB5CFD /* [CP] Embed Pods Frameworks */,
+				130B6F7C9A4348A4D9A0B5F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -792,9 +1028,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1682D451CB26FC200B11850 /* Build configuration list for PBXNativeTarget "KamanUITests" */;
 			buildPhases = (
+				26D1E9E810691471484B2661 /* [CP] Check Pods Manifest.lock */,
 				D1682D321CB26FC100B11850 /* Sources */,
 				D1682D331CB26FC100B11850 /* Frameworks */,
 				D1682D341CB26FC100B11850 /* Resources */,
+				B6245F4E38831170FBD35779 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -912,14 +1150,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4BC2D5011B236DDC79A067E9 /* Embed Pods Frameworks */ = {
+		0FEFA6426E47CEA43EDB5CFD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KamanTests/Pods-KamanTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		130B6F7C9A4348A4D9A0B5F7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KamanTests/Pods-KamanTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		24332555350227B5662F22CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -927,14 +1195,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kaman/Pods-Kaman-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F42EE1F5D6B412254896456 /* Copy Pods Resources */ = {
+		26D1E9E810691471484B2661 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5261DD15EF1829481220F47F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -942,20 +1225,63 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kaman/Pods-Kaman-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B105520745D1CB464A889F85 /* Check Pods Manifest.lock */ = {
+		B6245F4E38831170FBD35779 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KamanUITests/Pods-KamanUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDF0126A8AE3C1F071692937 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		C71A172D056AEF30F1D7CC79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D14ADF651D0871D8007D2B40 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 39b0b79118711e0954d4729ec960d217e9d2b121 c3beb2abde997d8bbaf9276b15fe2832ad9c364a6be53fa20ccd2b4d3bd65a0c";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -976,7 +1302,7 @@
 				D1682E1F1CB2948100B11850 /* TextFieldValidator.m in Sources */,
 				D1682E121CB2948100B11850 /* PFUser+Kamaner.m in Sources */,
 				D1682E171CB2948100B11850 /* ProfileViewController.m in Sources */,
-				D1682DEB1CB2948100B11850 /* InviteKamansViewController.m in Sources */,
+				D1682DEB1CB2948100B11850 /* InviteKamanersViewController.m in Sources */,
 				D1682E241CB2948100B11850 /* UIView+MGBadgeView.m in Sources */,
 				D1682E1A1CB2948100B11850 /* RateUserTableViewCell.m in Sources */,
 				D1682E131CB2948100B11850 /* PhotoFullViewController.m in Sources */,
@@ -1013,7 +1339,7 @@
 				D1682DF51CB2948100B11850 /* KamanNotificationTableViewCell.m in Sources */,
 				D1682E1E1CB2948100B11850 /* TermsViewController.m in Sources */,
 				D1682E261CB2948100B11850 /* Utils.m in Sources */,
-				D1682DFA1CB2948100B11850 /* LocalNotif.m in Sources */,
+				D1682DFA1CB2948100B11850 /* KamanLocalNotif.m in Sources */,
 				D1682E251CB2948100B11850 /* UserProfileViewController.m in Sources */,
 				D1682DF71CB2948100B11850 /* KamanRequestsTableViewController.m in Sources */,
 				D11185191CB44D920070BE24 /* OtherNotifsTableViewCell.m in Sources */,
@@ -1157,7 +1483,7 @@
 		};
 		D1682D401CB26FC200B11850 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6A5837261A477C7AC691248 /* Pods-Kaman.debug.xcconfig */;
+			baseConfigurationReference = EFD06F738A694473857E53B8 /* Pods-Kaman.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -1175,7 +1501,7 @@
 		};
 		D1682D411CB26FC200B11850 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4FA8EA17FF48A3AA1DED6191 /* Pods-Kaman.release.xcconfig */;
+			baseConfigurationReference = 865F572FE95595450BFCBF60 /* Pods-Kaman.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -1193,6 +1519,7 @@
 		};
 		D1682D431CB26FC200B11850 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B41E20D928D3A5328DA1C271 /* Pods-KamanTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = KamanTests/Info.plist;
@@ -1205,6 +1532,7 @@
 		};
 		D1682D441CB26FC200B11850 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F48A726E03A250EEEBF8C53 /* Pods-KamanTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = KamanTests/Info.plist;
@@ -1217,6 +1545,7 @@
 		};
 		D1682D461CB26FC200B11850 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8216023C5BCFB064FBA8738F /* Pods-KamanUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = KamanUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1228,6 +1557,7 @@
 		};
 		D1682D471CB26FC200B11850 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78B30632CC74A02D2FA55F7B /* Pods-KamanUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = KamanUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

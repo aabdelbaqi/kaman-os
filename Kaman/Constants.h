@@ -50,7 +50,10 @@ alpha:1.0]
 #define PUSH_TYPE_GROUP_MESSAGE @"GroupMessage"
 #define PUSH_TYPE_CHAT_MESSAGE @"ChatMessage"
 
+
+typedef void(^BoolResultCallback)(BOOL result);
 typedef void(^ResultCallback)(id result);
+typedef void(^ArrayPairResultCallback)(NSArray *pair1, NSArray *pair2);
 typedef void(^ErrorCallback)(NSError* error);
 
 

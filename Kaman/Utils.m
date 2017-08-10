@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Utils.h"
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 #import "PFObject+KamanCat.h"
 #import "TermsViewController.h"
 
@@ -214,49 +214,6 @@
     return image;
 }
 
-+(void) updateCurrentPFUserColumn: (NSString*) column withValue: (id) value onCallBack: (ResultCallback) callback
-{
-    [self updatePFUser:[PFUser currentUser] onColumn:column withValue:value onCallBack:callback];
-}
-
-
-+(void) updatePFUser:(PFUser*) user onColumn: (NSString*) column withValue: (id) value onCallBack: (ResultCallback) callback
-{
-    if(value) {
-        [user setObject: value forKey:column];
-        
-    }
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-          if (!error) {
-            if(callback) {
-                callback(value);
-            }
-        }
-        else{
-            // Error
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-
-}
-
-
-+(NSString*) getPFUserAgeAsString:(PFUser*) user onNoAge :(NSString*) noAge
-{
-    NSDate *dob = [user objectForKey:@"DateOfBirth"];
-    if(dob) {
-        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-        NSDateComponents *components = [calendar components:NSCalendarUnitYear
-                                                   fromDate:dob
-                                                     toDate:[NSDate date]
-                                                    options:0];
-        return [NSString stringWithFormat:@"%ld", (long)components.year];
-        
-    } else {
-        return noAge;
-    }
-
-}
 +(void) styleButton: (UIButton*) button bgColor: (UIColor*) bgColor highlightColor: (UIColor*) highlightColor
 {
     [self styleButton:button bgColor:bgColor highlightColor:highlightColor radius:10];
@@ -594,7 +551,7 @@
 +(void) updateApplicationBadge 
 {
     UIApplication * application =  [UIApplication sharedApplication];
-    RLMResults<LocalNotif *> *notifs = [LocalNotif allObjects]; // retrieves all LocalNotifs from the default Realm
+    RLMResults<KamanLocalNotif *> *notifs = [KamanLocalNotif allObjects]; // retrieves all LocalNotifs from the default Realm
     NSInteger number = [notifs count];
     application.applicationIconBadgeNumber = number;
     
@@ -618,13 +575,13 @@
         lastDate = [Utils dateFromStringWithSec:lastDateStr];
     }
     
-    if([[PFUser currentUser].objectId isEqualToString: @"1OkH6YdVsT"]) {  // if user is Jasem
+    /*if([[PFUser currentUser].objectId isEqualToString: @"1OkH6YdVsT"]) {  // if user is Jasem
         if(!notifsReset) { // and we have not reset his notifs
             [Utils deleteNotifsWithQuery:nil]; // reset all notifications
             [prefs setObject:@"1OkH6YdVsT" forKey:@"notifs_reset"];
             [prefs synchronize];
         }
-    }
+    }*/
     PFUser * currentUser = [PFUser currentUser];
     
     PFQuery *query = [PFQuery queryWithClassName:@"LocalNotif"];
@@ -653,7 +610,7 @@
                 }
                 BOOL notarchived = !archived && ![myArchived containsObject:kaman.objectId];
                 if(notarchived) {
-                    [Utils addLocalNotifOfType:obj[@"type"] fromSender:sender.objectId forKaman:kaman.objectId hostedBy:kamanHost.objectId withAlert:data dated:obj.createdAt];
+                    [Utils addLocalNotifWithID:obj.objectId ofType:obj[@"type"] fromSender:sender.objectId forKaman:kaman.objectId hostedBy:kamanHost.objectId withAlert:data dated:obj.createdAt];
                     [notifs addObject:obj];
                 }
             }
@@ -671,12 +628,12 @@
     }];
 }
 
-+(void) addLocalNotifOfType:(NSString*) type fromSender :(NSString*) senderObjId forKaman: (NSString*) kamanObjId hostedBy:(NSString*) kamanHostId withAlert:(NSString*) alert dated:(NSDate*) date
++(void) addLocalNotifWithID:(NSString*)_id ofType:(NSString*) type fromSender :(NSString*) senderObjId forKaman: (NSString*) kamanObjId hostedBy:(NSString*) kamanHostId withAlert:(NSString*) alert dated:(NSDate*) date
 {
     
     NSLog(@"Notif Date %@",date);
-    LocalNotif *notif = [[LocalNotif alloc]
-                         initWithValue:@{
+    KamanLocalNotif *notif = [[KamanLocalNotif alloc]
+                         initWithValue:@{@"notifId" : _id,
                                          @"type" : type,
                                          @"date" : date,
                                          @"data" : alert,
@@ -697,24 +654,41 @@
     
 }
 
-+(void)deleteNotifsWithQuery:(NSString *)query
++(NSInteger)deleteNotifsWithQuery:(NSString *)query
 {
     // Get the default Realm
     RLMRealm *realm = [RLMRealm defaultRealm];
-    
-    RLMResults *notifs = query ? [LocalNotif objectsWhere:
-                                  query] : [LocalNotif allObjects];
+    RLMResults *notifs = query ? [KamanLocalNotif objectsWhere:
+                                  query] : [KamanLocalNotif allObjects];
+    NSInteger count = [notifs count];
     [realm beginWriteTransaction];
     [realm deleteObjects:notifs];
     [realm commitWriteTransaction];
     [Utils updateApplicationBadge];
+    if(query) {
+        NSMutableArray * backendObjects = [NSMutableArray new];
+        for (KamanLocalNotif * notif in notifs) {
+            [backendObjects addObject:[PFObject objectWithoutDataWithClassName:@"LocalNotif" objectId:notif.notifId]];
+        }
+        [PFObject deleteAllInBackground:backendObjects block:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error) {
+                NSLog(@"Error deleting notification objects %@",error);
+            }
+        }];
+    }
+
+    return count;
 
 }
 
 
 +(NSInteger) updateNotifBadgeFor:(NSString*) query toView:(UIView*) view position: (MGBadgePosition) position
 {
-    RLMResults<LocalNotif *> *hostNotifs = [LocalNotif objectsWhere:query];
+    RLMResults<KamanLocalNotif *> *hostNotifs = [KamanLocalNotif objectsWhere:query];
+    /*NSLog(@"Query: %@",query);
+    for (KamanLocalNotif * notif  in hostNotifs) {
+        NSLog(@"%@ => %@",notif.type, notif.notifId);
+    } */
     if(view) {
         view.badgeView.badgeValue = [hostNotifs count];
         view.badgeView.badgeColor = DesignersBrownColor;
@@ -914,7 +888,72 @@
             [HUD dismiss];
         });
     }
+}
+
++(void)invitesAndRequestsForKaman:(PFObject *)kaman onSuccess:(ArrayPairResultCallback)callback onError:(ErrorCallback)errorCallback
+{
+    dispatch_group_t invitesRequestsGroup = dispatch_group_create();
     
+    __block NSError * error = nil;
+    NSMutableArray * invites = [NSMutableArray new],  *requests = [NSMutableArray new];
+    
+    // Load invites
+    dispatch_group_enter(invitesRequestsGroup);
+    PFQuery *query = [PFQuery queryWithClassName:@"KamanInvite"];
+    [query whereKey:@"Kaman" equalTo:kaman];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable err) {
+        if(!err) {
+            if([objects count] > 0) {
+                for (PFObject * obj in objects) {
+                    PFUser * invited = [obj objectForKey:@"InvitedUser"];
+                    [invites addObject:invited.objectId];
+                }
+            }
+        } else {
+            error = err;
+        }
+        dispatch_group_leave(invitesRequestsGroup);
+    }];
+
+    // Load kaman requests
+    dispatch_group_enter(invitesRequestsGroup);
+    PFQuery *requestsQuery = [PFQuery queryWithClassName:@"KamanRequest"];
+    [requestsQuery whereKey:@"Kaman" equalTo:kaman];
+    [requestsQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable err) {
+        if(!err) {
+            if([objects count] > 0) {
+                for (PFObject * obj in objects) {
+                    PFUser * requestingUser = [obj objectForKey:@"RequestingUser"];
+                    [requests addObject:requestingUser.objectId];
+                }
+            }
+        } else {
+            error = err;
+        }
+        dispatch_group_leave(invitesRequestsGroup);
+    }];
+
+    
+    dispatch_group_notify(invitesRequestsGroup,dispatch_get_main_queue(),^{
+        // Won't get here until everything has finished
+        if(error) {
+            errorCallback(error);
+        } else {
+            if(callback) {
+                callback(invites,requests);
+            }
+            
+        }
+    });
+}
+
++(void) showStatusNotificationWithMessage:(NSString*) msg isError:(BOOL)isError
+{
+    CWStatusBarNotification *notification = [CWStatusBarNotification new];
+    notification.notificationLabelBackgroundColor = isError ? [UIColor redColor] : MyOrangeColor;
+    notification.notificationLabelTextColor = [UIColor whiteColor];
+    [notification displayNotificationWithMessage:msg
+                                          forDuration:1.0f];
 }
 
 

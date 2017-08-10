@@ -12,11 +12,13 @@
 #import "Utils.h"
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 #import "SWRevealViewController.h"
 #import "HomeViewController.h"
 #import "NotificationsViewController.h"
 #import "Session.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 
@@ -29,6 +31,9 @@ NSInteger kamansViewed;
     // Override point for customization after application launch.
     
     [[UIBarButtonItem appearance] setTintColor:MyOrangeColor];
+    
+    // Crashlytics
+    [Fabric with:@[[Crashlytics class]]];
     
     // FB
     [FBSDKLoginButton class];
@@ -233,6 +238,9 @@ NSInteger kamansViewed;
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [FBSDKAppEvents activateApp];
+    [FBSDKAppLinkUtility fetchDeferredAppLink:^(NSURL *url, NSError *error) {
+        
+    }];
     kamansViewed = 0;
 }
 

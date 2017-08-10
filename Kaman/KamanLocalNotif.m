@@ -1,14 +1,14 @@
 //
-//  LocalNotif.m
+//  KamanLocalNotif.m
 //  Kaman
 //
 //  Created by Moin' Victor on 22/12/2015.
 //  Copyright © 2015 Riad & Co. All rights reserved.
 //
 
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 #import "Utils.h"
-@implementation LocalNotif
+@implementation KamanLocalNotif
 
 // Specify default values for properties
 

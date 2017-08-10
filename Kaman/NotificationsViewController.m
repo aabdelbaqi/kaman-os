@@ -16,7 +16,7 @@
 #import "MessagesViewController.h"
 #import "RateUserViewController.h"
 #import "KamansTableEmptyView.h"
-#import "LocalNotif.h"
+#import "KamanLocalNotif.h"
 #import "OtherNotifsTableViewController.h"
 #import <DateTools/DateTools.h>
 
@@ -110,10 +110,10 @@ UITableView * otherNotifsTableView;
     NSInteger announce = [Utils updateNotifBadgeFor:[NSString stringWithFormat:@"type IN {'%@','%@','%@'}",PUSH_TYPE_REQUEST_ACCEPTED, PUSH_TYPE_INVITE_ACCEPTED,PUSH_TYPE_RATED] toView:nil position:MGBadgePositionTopRight];
     
     UIView * view = [self.announceBarButton valueForKey:@"view"];
+    [view setHidden:YES];
+    
     if(announce > 0) {
         [view setHidden:NO];
-    } else {
-        [view setHidden:YES];
     }
     
     view.badgeView.badgeValue = announce;
@@ -906,7 +906,6 @@ UITableView * otherNotifsTableView;
 {
     CGFloat height = [self calculateHeight];
     
-    NSLog(@"Height = %f",height);
     return height;
 }
 // Override to support conditional editing of the table view.
@@ -1012,7 +1011,7 @@ UITableView * otherNotifsTableView;
     cell.imageViewWidthConstraint.constant = (IS_IPHONE_6 || IS_IPHONE_5 ? 72.0 : [self calculateHeight] -  20);
         [cell setNeedsDisplay];
     
-    NSLog(@"Image Height = %f",cell.imageViewHeightConstraint.constant);
+    //NSLog(@"Image Height = %f",cell.imageViewHeightConstraint.constant);
 
     cell.editViewButton.tag = indexPath.row;
     cell.button1.tag = indexPath.row;
@@ -1156,6 +1155,12 @@ UITableView * otherNotifsTableView;
                         if([objects count] > 0) {
                             cell.backgroundColor = MyLightestGray;
                         } else {
+                            NSString * reqsQuery = [NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_REQUESTED,kaman.objectId];
+                            NSInteger deleted = [Utils deleteNotifsWithQuery:reqsQuery];
+                            if(deleted > 0) {
+                                [self updateNotifBadgesThenReload:YES];
+                            }
+                            
                             if(pmsgs > 0 || groupChats > 0) {
                                 cell.backgroundColor = MyLightestGray;
                             } else {
@@ -1258,6 +1263,11 @@ UITableView * otherNotifsTableView;
             [cell.button2 setTitle: @"Message Group" forState:UIControlStateNormal];
             [cell.button3 setTitle: @"Rate Host" forState:UIControlStateNormal];
             
+            NSString * invitedQuery = [NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_INVITED,kaman.objectId];
+            NSInteger deleted = [Utils deleteNotifsWithQuery:invitedQuery];
+            if(deleted > 0) {
+                [self updateNotifBadgesThenReload:YES];
+            }
             
             NSLog(@"Attendee private message [%@]: %lu",[kaman objectForKey:@"Name"],pmsgs);
             NSLog(@"Attendee Group message [%@]: %lu",[kaman objectForKey:@"Name"],groupChats);

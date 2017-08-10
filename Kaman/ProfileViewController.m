@@ -237,7 +237,7 @@
             }
         }
         [cell.detailTagLabel setText:[self.profile_detail_labels objectAtIndex:indexPath.row]];
-          [cell.detailValueLabel setText:[Utils getPFUserAgeAsString:[PFUser currentUser] onNoAge:range]];
+          [cell.detailValueLabel setText:[[PFUser currentUser] userAgeAsStringOnNoAge:range]];
     } else if(indexPath.row == 3) {
         [cell.detailValueLabel setAlpha:0.0];
         [cell.rateLow setAlpha:1.0];

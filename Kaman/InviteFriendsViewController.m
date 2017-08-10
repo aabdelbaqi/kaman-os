@@ -9,7 +9,7 @@
 #import "InviteFriendsViewController.h"
 #import "Utils.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
-#import "InviteKamansViewController.h"
+#import "InviteKamanersViewController.h"
 #import "HostKamanViewController.h"
 
 @interface InviteFriendsViewController ()
@@ -160,8 +160,8 @@ NSString * shareMessage;
     } else {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         
-        InviteKamansViewController *someViewController = [storyboard instantiateViewControllerWithIdentifier:@"invite_kamans"];
-        someViewController.kaman = self.kaman;
+        InviteKamanersViewController *someViewController = [storyboard instantiateViewControllerWithIdentifier:@"invite_kamans"];
+        [someViewController setKamanObject:self.kaman];
         someViewController.showButtons = YES;
         [self.navigationController pushViewController:someViewController animated:YES];
     }

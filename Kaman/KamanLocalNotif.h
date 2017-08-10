@@ -1,5 +1,5 @@
 //
-//  LocalNotif.h
+//  KamanLocalNotif.h
 //  Kaman
 //
 //  Created by Moin' Victor on 22/12/2015.
@@ -8,7 +8,8 @@
 
 #import <Realm/Realm.h>
 
-@interface LocalNotif : RLMObject
+@interface KamanLocalNotif : RLMObject
+@property NSString  *notifId;
 @property NSString  *kamanId;
 @property NSString  *senderId;
 @property NSString  *recepientId;
@@ -19,5 +20,5 @@
 @end
 
 // This protocol enables typed collections. i.e.:
-// RLMArray<LocalNotif>
-RLM_ARRAY_TYPE(LocalNotif)
+// RLMArray<KamanLocalNotif>
+RLM_ARRAY_TYPE(KamanLocalNotif)
