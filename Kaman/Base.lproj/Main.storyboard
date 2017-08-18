@@ -492,7 +492,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VU4-BQ-oti">
                                 <rect key="frame" x="12" y="212" width="351" height="45"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="5" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="GKD-2k-Gat">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="5" maxValue="50000" translatesAutoresizingMaskIntoConstraints="NO" id="GKD-2k-Gat">
                                         <rect key="frame" x="6" y="8" width="339" height="31"/>
                                         <color key="thumbTintColor" red="0.91764705879999997" green="0.26274509800000001" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </slider>
@@ -1997,8 +1997,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="zs1-A3-e9w"/>
         <segue reference="DvV-Qa-fCh"/>
-        <segue reference="8he-N9-7Ny"/>
         <segue reference="0Iv-cJ-usY"/>
+        <segue reference="8he-N9-7Ny"/>
         <segue reference="Nyq-py-z5y"/>
     </inferredMetricsTieBreakers>
 </document>
