@@ -48,9 +48,13 @@ NSInteger kamansViewed;
     //[PFUser enableRevocableSessionInBackground];
     
     // Initialize Parse.
-    [Parse setApplicationId:@"1vbNptEzFhOptvNm0cs0Gud8kVCFMg4LjyczEcXh"
-                  clientKey:@"z7JGPZXO9QgB3OLvE4zHBX7Dz6JtGCSHupM7oFL7"];
-    
+    //[Parse setApplicationId:@"1vbNptEzFhOptvNm0cs0Gud8kVCFMg4LjyczEcXh"
+     //             clientKey:@"z7JGPZXO9QgB3OLvE4zHBX7Dz6JtGCSHupM7oFL7"];
+    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        configuration.applicationId = @"1vbNptEzFhOptvNm0cs0Gud8kVCFMg4LjyczEcXh";
+        configuration.clientKey = @"z7JGPZXO9QgB3OLvE4zHBX7Dz6JtGCSHupM7oFL7";
+        configuration.server = @"http://kaman-os.herokuapp.com/parse";
+    }]];
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     

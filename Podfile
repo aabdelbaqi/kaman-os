@@ -22,7 +22,7 @@ target 'Kaman' do
    pod 'DateTools'
    pod 'Fabric'
    pod 'Crashlytics'
-   pod 'CWStatusBarNotification', '~> 2.3.4'
+   pod 'CWStatusBarNotification', '~> 2.3.5'
 end
 
 target 'KamanTests' do

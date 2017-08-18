@@ -29,7 +29,7 @@ PODS:
   - Bolts/Tasks (1.7.0)
   - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
-  - CWStatusBarNotification (2.3.4)
+  - CWStatusBarNotification (2.3.5)
   - DateTools (1.7.0)
   - Fabric (1.6.7)
   - FBSDKCoreKit (4.12.0):
@@ -92,7 +92,7 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0
   - AFNetworking (~> 2.0)
   - Crashlytics
-  - CWStatusBarNotification (~> 2.3.4)
+  - CWStatusBarNotification (~> 2.3.5)
   - DateTools
   - Fabric
   - FLAnimatedImage (~> 1.0)
@@ -114,7 +114,7 @@ SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
-  CWStatusBarNotification: 3fec41edcb0ae3677d9febfcb9632d8bdf52294c
+  CWStatusBarNotification: 3d2738b25c3207f60cc50201388d3c96182545ff
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
@@ -123,7 +123,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  Google: cd92fab98f800f509da88c1e0c570275713bc9d5
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
   GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
@@ -142,6 +142,6 @@ SPEC CHECKSUMS:
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
-PODFILE CHECKSUM: 24391ee0ea5cb37595a162fe05fd8871c667aed9
+PODFILE CHECKSUM: cf5960cdfb9bff89ee49a9f87649aeb07151ce5f
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.1
