@@ -33,9 +33,33 @@ PFObject *kamanArea;
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+// AM add validator
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if (newString.length < 1) {
+        // too short
+        
+    } else if (newString.length > 25) {
+        NSLog(@"more than 25");
+        //newString=[newString capitalizedString];
+        textField.text=[newString substringToIndex:25];
+        
+        NSLog(@"Value of newString = %@", newString);
+        NSLog(@"Value of string = %@", string);
+        
+        
+    }
+    textField.text=[textField.text capitalizedString];
+    return YES;
+}
+// End validator
+
+
 
 - (IBAction)submitClicked:(id)sender {
-    
+ 
     if([self.nameTextField validate] && [self.dateTextField validate]
        && [self.timeTextField validate] && [self.areaTextField validate]
        && [self.addressTextField validate]) {
@@ -313,7 +337,7 @@ PFObject *kamanArea;
     [self.view addGestureRecognizer:singleTap];
     
     CGRect frame =  self.descTextView.frame;
-    self.descTextViewHeightConstraint.constant = frame.size.width * 0.50;
+    self.descTextViewHeightConstraint.constant = frame.size.width * 0.250;
     
     frame = self.imageView1.frame;
     for (NSLayoutConstraint *lc in @[self.imageView1HeightConstraint,self.imageView2HeightConstraint,self.imageView3HeightConstraint,self.imageView4HeightConstraint]) {
@@ -466,7 +490,7 @@ PFObject *kamanArea;
     pickerLibrary.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     pickerLibrary.delegate = self;
     pickerLibrary.view.tag = button.tag;
-     UIAlertController * view=   [UIAlertController
+    UIAlertController * view=   [UIAlertController
                                  alertControllerWithTitle:@"Kaman Image"
                                  message:@"Choose existing photo or take a new photo"
                                  preferredStyle:UIAlertControllerStyleActionSheet];
@@ -496,7 +520,7 @@ PFObject *kamanArea;
                                 
                                 [self presentViewController:pickerLibrary animated:YES
                                                  completion:^ {
-                                                    // [pickerLibrary takePicture];
+                                                    //[pickerLibrary takePicture];
                                                  }];
                                 
                             }];
