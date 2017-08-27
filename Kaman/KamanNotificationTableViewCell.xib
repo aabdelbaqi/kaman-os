@@ -21,47 +21,55 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZR-Pw-sWx">
-                        <rect key="frame" x="8" y="8" width="310" height="83.5"/>
+                        <rect key="frame" x="8" y="8" width="310" height="87.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XLu-hn-ERn">
-                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="83.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="87.5" height="87.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XLu-hn-ERn" secondAttribute="height" multiplier="1:1" id="OwC-8R-p2z"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ls9-ww-ZUx">
-                                <rect key="frame" x="83.5" y="0.0" width="226.5" height="83.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ls9-ww-ZUx">
+                                <rect key="frame" x="87.5" y="0.0" width="222.5" height="87.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="5QT-Fi-a1y">
-                                        <rect key="frame" x="5" y="0.0" width="221.5" height="19.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5QT-Fi-a1y">
+                                        <rect key="frame" x="5" y="0.0" width="217.5" height="19.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="R05-K8-FrT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="v2V-s4-ODa">
-                                        <rect key="frame" x="5" y="19.5" width="221.5" height="64"/>
+                                        <rect key="frame" x="5" y="23.5" width="217.5" height="64"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="crS-T8-lFh">
-                                                <rect key="frame" x="0.0" y="0.0" width="221.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="217.5" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbn-ma-hpX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <state key="normal" title="Edit Details">
                                                             <color key="titleColor" red="0.85490196080000003" green="0.30980392159999998" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Flg-3b-wck" propertyAccessControl="none">
-                                                        <rect key="frame" x="113" y="0.0" width="108.5" height="30"/>
+                                                        <rect key="frame" x="74" y="0.0" width="69.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                         <state key="normal" title="Private Message">
                                                             <color key="titleColor" red="0.85490196080000003" green="0.30980392159999998" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v9J-xD-NfG">
+                                                        <rect key="frame" x="147.5" y="0.0" width="70" height="30"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="G4F-4f-KJy"/>
+                                                            <constraint firstAttribute="width" constant="10" id="g7B-Ne-uV4"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Gbn-ma-hpX" firstAttribute="height" secondItem="crS-T8-lFh" secondAttribute="height" id="CD2-Oi-qN1"/>
@@ -69,10 +77,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yh6-Ib-4Vv">
-                                                <rect key="frame" x="0.0" y="34" width="221.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="34" width="217.5" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWF-bh-oPe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="109" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                         <state key="normal" title="Requests (0)">
@@ -80,7 +88,7 @@
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUN-dN-3m6">
-                                                        <rect key="frame" x="113" y="0.0" width="108.5" height="30"/>
+                                                        <rect key="frame" x="111" y="0.0" width="106.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="3" maxY="0.0"/>
                                                         <state key="normal" title="Group Message">
@@ -124,8 +132,10 @@
                 <outlet property="button2" destination="rUN-dN-3m6" id="feL-ZZ-A8M"/>
                 <outlet property="button3" destination="aWF-bh-oPe" id="HPy-Q4-5Zn"/>
                 <outlet property="editViewButton" destination="Gbn-ma-hpX" id="c7t-vs-JcL"/>
+                <outlet property="fakeviewb1" destination="v9J-xD-NfG" id="stI-nr-blB"/>
                 <outlet property="kamanImageView" destination="XLu-hn-ERn" id="wSS-sP-vRk"/>
                 <outlet property="kamanNameLabel" destination="5QT-Fi-a1y" id="aC0-9a-vAD"/>
+                <outlet property="stackviewb1" destination="crS-T8-lFh" id="vx9-gf-qBx"/>
             </connections>
             <point key="canvasLocation" x="257" y="158"/>
         </tableViewCell>

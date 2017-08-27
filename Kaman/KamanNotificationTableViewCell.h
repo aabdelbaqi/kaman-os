@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *button1;
 @property (weak, nonatomic) IBOutlet UIButton *button2;
 @property (weak, nonatomic) IBOutlet UIButton *button3;
+@property (weak, nonatomic) IBOutlet UIView *fakeviewb1;
+@property (weak, nonatomic) IBOutlet UIStackView *stackviewb1;
 
 @property (weak,nonatomic) IBOutlet NSLayoutConstraint *imageViewWidthConstraint;
 @property (weak,nonatomic) IBOutlet NSLayoutConstraint *imageViewHeightConstraint;

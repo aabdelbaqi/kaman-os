@@ -108,12 +108,14 @@ UITableView * otherNotifsTableView;
     
     
     NSInteger announce = [Utils updateNotifBadgeFor:[NSString stringWithFormat:@"type IN {'%@','%@','%@'}",PUSH_TYPE_REQUEST_ACCEPTED, PUSH_TYPE_INVITE_ACCEPTED,PUSH_TYPE_RATED] toView:nil position:MGBadgePositionTopRight];
+   
     
     UIView * view = [self.announceBarButton valueForKey:@"view"];
     [view setHidden:YES];
     
     if(announce > 0) {
         [view setHidden:NO];
+        NSLog(@"announce");
     }
     
     view.badgeView.badgeValue = announce;
@@ -124,6 +126,7 @@ UITableView * otherNotifsTableView;
     [view.badgeView setOutlineColor:MyGreyColor];
     view.badgeView.horizontalOffset = 5.0;
     view.badgeView.verticalOffset = 5.0;
+    
 
     if(reload)
         [self.tableView reloadData];
@@ -1013,7 +1016,13 @@ UITableView * otherNotifsTableView;
         [cell setNeedsDisplay];
     
     //NSLog(@"Image Height = %f",cell.imageViewHeightConstraint.constant);
-
+// AM EXTRA FATY
+   // UIButton *b1 = cell.button1;
+   // UIButton *b2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+   // UIButton *b3 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+   // b1=[b1 initWithFrame:CGRectMake(0, 0, 100, 50)];
+    
+    
     cell.editViewButton.tag = indexPath.row;
     cell.button1.tag = indexPath.row;
     cell.button2.tag = indexPath.row;
@@ -1034,29 +1043,44 @@ UITableView * otherNotifsTableView;
                      forControlEvents:UIControlEventAllEvents];
     cell.button1.badgeView.badgeValue = 0;
     cell.button2.badgeView.badgeValue = 0;
-    cell.button3.badgeView.badgeValue = 0;
+   cell.button3.badgeView.badgeValue = 0;
+    [cell.fakeviewb1 bringSubviewToFront:(cell.stackviewb1)];
     
-    [self updateNotifBadgesThenReload:NO];
+    // AM added
+   /*[cell.button1.badgeView setBadgeValue:1];
+    [cell.button1.badgeView setOutlineWidth:0.0];
+    [cell.button1.badgeView setPosition:MGBadgePositionTopRight];
+    [cell.button1.badgeView setBadgeColor:[UIColor blueColor]];
+    [cell.button2.badgeView setBadgeValue:2];
+    [cell.button2.badgeView setOutlineWidth:0.0];
+    [cell.button2.badgeView setPosition:MGBadgePositionTopRight];
+    [cell.button2.badgeView setBadgeColor:[UIColor blueColor]];
+    [cell.button3.badgeView setBadgeValue:3];
+    [cell.button3.badgeView setOutlineWidth:0.0];
+    [cell.button3.badgeView setPosition:MGBadgePositionTopRight];
+    [cell.button3.badgeView setBadgeColor:[UIColor blueColor]];
+    */
+    [self updateNotifBadgesThenReload:NO]; // AM changed from No to yes
     
     if(self.segmentControl.selectedSegmentIndex == 1) { // Host section
-        [cell.button1 setTitle: @"Private Message" forState:UIControlStateNormal];
-        [cell.button2 setTitle: @"Group Message" forState:UIControlStateNormal];
+        [cell.button1 setTitle: @"Private Messages" forState:UIControlStateNormal];
+        [cell.button2 setTitle: @"Group Messages" forState:UIControlStateNormal];
         [Utils setUIView:cell.button3 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
         [cell.button3 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
        
-        NSInteger requests = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_REQUESTED,kaman.objectId] toView:nil position:MGBadgePositionCenterLeft];
+        NSInteger requests = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_REQUESTED,kaman.objectId] toView:cell.fakeviewb1 position:MGBadgePositionTopLeft];
         
-        NSInteger pmsgs = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_CHAT_MESSAGE,kaman.objectId] toView:nil position:MGBadgePositionCenterLeft];
+        NSInteger pmsgs = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_CHAT_MESSAGE,kaman.objectId] toView:cell.button2 position:MGBadgePositionTopRight];
         
-        NSInteger groupChats = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_GROUP_MESSAGE,kaman.objectId] toView:nil position:MGBadgePositionCenterLeft];
+        NSInteger groupChats = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_GROUP_MESSAGE,kaman.objectId] toView:cell.button3 position:MGBadgePositionTopRight];
         
-       NSLog(@"Host private message [%@]: %lu",[kaman objectForKey:@"Name"],pmsgs);
-        NSLog(@"Host Group message [%@]: %lu",[kaman objectForKey:@"Name"],groupChats);
+       NSLog(@"Host Private Messages [%@]: %lu",[kaman objectForKey:@"Name"],pmsgs);
+        NSLog(@"Host Group Messages [%@]: %lu",[kaman objectForKey:@"Name"],groupChats);
         
         if(pmsgs > 0) {
             [cell.button1 setTitle: [NSString stringWithFormat: @"Msg Attendee (%lu)", pmsgs] forState:UIControlStateNormal];
         } else {
-            [cell.button1 setTitle: @"Private Message" forState:UIControlStateNormal];
+            [cell.button1 setTitle: @"Private Messages" forState:UIControlStateNormal];
         }
         
         if(groupChats > 0) {
@@ -1203,15 +1227,15 @@ UITableView * otherNotifsTableView;
             }
         }
     } else { // Attendee section
-        [cell.button1 setTitle: @"Host Message" forState:UIControlStateNormal];
-        [cell.button2 setTitle: @"Group Message" forState:UIControlStateNormal];
+        [cell.button1 setTitle: @"Host Messages" forState:UIControlStateNormal];
+        [cell.button2 setTitle: @"Group Messages" forState:UIControlStateNormal];
         [cell.editViewButton setTitle:@"View Details" forState:UIControlStateNormal];
         
-        NSInteger invites = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_INVITED,kaman.objectId] toView:nil position:MGBadgePositionCenterLeft];
+        NSInteger invites = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_INVITED,kaman.objectId] toView:cell.button3 position:MGBadgePositionCenterRight];
         
-        NSInteger pmsgs = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_CHAT_MESSAGE,kaman.objectId] toView:nil position:MGBadgePositionBottomLeft];
+        NSInteger pmsgs = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_CHAT_MESSAGE,kaman.objectId] toView:cell.fakeviewb1 position:MGBadgePositionTopLeft];
         
-        NSInteger groupChats =[Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_GROUP_MESSAGE,kaman.objectId] toView:nil position:MGBadgePositionBottomLeft];
+        NSInteger groupChats =[Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_GROUP_MESSAGE,kaman.objectId] toView:cell.button2 position:MGBadgePositionCenterRight];
         
         if(pmsgs > 0 || groupChats > 0 || invites > 0) {
             cell.backgroundColor = MyLightestGray;
@@ -1266,8 +1290,8 @@ UITableView * otherNotifsTableView;
             
         } if(indexPath.section == 1) { // Accepted section
             
-            [cell.button1 setTitle: @"Host Message" forState:UIControlStateNormal];
-            [cell.button2 setTitle: @"Group Message" forState:UIControlStateNormal];
+            [cell.button1 setTitle: @"Host Messages" forState:UIControlStateNormal];
+            [cell.button2 setTitle: @"Group Messages" forState:UIControlStateNormal];
             [cell.button3 setTitle: @"Rate Host" forState:UIControlStateNormal];
             
             NSString * invitedQuery = [NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_INVITED,kaman.objectId];
@@ -1276,20 +1300,22 @@ UITableView * otherNotifsTableView;
                 [self updateNotifBadgesThenReload:YES];
             }
             
-            NSLog(@"Attendee private message [%@]: %lu",[kaman objectForKey:@"Name"],pmsgs);
-            NSLog(@"Attendee Group message [%@]: %lu",[kaman objectForKey:@"Name"],groupChats);
+            NSLog(@"Attendee Private Messages [%@]: %lu",[kaman objectForKey:@"Name"],pmsgs);
+            NSLog(@"Attendee Group Messages [%@]: %lu",[kaman objectForKey:@"Name"],groupChats);
             
             if(pmsgs > 0) {
-                [cell.button1 setTitle: [NSString stringWithFormat: @"Host Message (%lu)", pmsgs] forState:UIControlStateNormal];
+                [cell.button1 setTitle: [NSString stringWithFormat: @"Host Messages (%lu)", pmsgs] forState:UIControlStateNormal];
             } else {
-                [cell.button1 setTitle: @"Host Message" forState:UIControlStateNormal];
+                [cell.button1 setTitle: @"Host Messages" forState:UIControlStateNormal];
             }
             
             if(groupChats > 0) {
                 [cell.button2 setTitle: [NSString stringWithFormat: @"Msg Group (%lu)", groupChats] forState:UIControlStateNormal];
+                // AM test badge
+                
                 
             } else {
-                [cell.button2 setTitle: @"Group Message" forState:UIControlStateNormal];
+                [cell.button2 setTitle: @"Group Messages" forState:UIControlStateNormal];
             }
             
             [cell.editViewButton addTarget:self action:@selector(viewAcceptedKamanAsAttendee:) forControlEvents:UIControlEventTouchUpInside];

@@ -620,7 +620,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qsK-Yk-trO" id="1uj-CR-QKF">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -655,7 +655,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xgr-h2-L6h" id="Jvv-9i-bdj">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1103,45 +1103,45 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GTb-c7-KNT">
-                                                <rect key="frame" x="20" y="334" width="87.666666666666671" height="64"/>
+                                                <rect key="frame" x="20" y="334" width="88" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="Nat-hc-XS4"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nxl-G4-mfu">
-                                                <rect key="frame" x="114.66666666666669" y="334" width="87.333333333333314" height="64"/>
+                                                <rect key="frame" x="115" y="334" width="87" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="mTt-JI-IPu"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaW-Af-shM">
-                                                <rect key="frame" x="142.33333333333334" y="350" width="32" height="32"/>
+                                                <rect key="frame" x="142" y="350" width="32" height="32"/>
                                                 <state key="normal" image="insert-image"/>
                                                 <connections>
                                                     <action selector="onAddOrEditImage:" destination="ha4-R5-b5j" eventType="touchUpInside" id="JeT-wP-aIs"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7m8-dd-bxT">
-                                                <rect key="frame" x="215.00000000000003" y="334" width="87.666666666666714" height="64"/>
+                                                <rect key="frame" x="215" y="334" width="88" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="mEJ-dH-UKU"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOQ-dw-i0X">
-                                                <rect key="frame" x="242.66666666666669" y="350" width="32.000000000000057" height="32"/>
+                                                <rect key="frame" x="243" y="350" width="32" height="32"/>
                                                 <state key="normal" image="insert-image"/>
                                                 <connections>
                                                     <action selector="onAddOrEditImage:" destination="ha4-R5-b5j" eventType="touchUpInside" id="5ds-Kd-HF8"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7xc-FU-n3a">
-                                                <rect key="frame" x="307.66666666666674" y="334" width="87.333333333333314" height="64"/>
+                                                <rect key="frame" x="308" y="334" width="87" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="8BH-Y1-fbp"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ppa-H2-L3i">
-                                                <rect key="frame" x="278.66666666666669" y="381" width="24" height="25"/>
+                                                <rect key="frame" x="279" y="381" width="24" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="7EO-Et-f9S"/>
                                                 </constraints>
@@ -1161,7 +1161,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgN-ue-bfd">
-                                                <rect key="frame" x="83.666666666666671" y="382" width="24" height="24"/>
+                                                <rect key="frame" x="84" y="382" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="ITE-ak-Ea0"/>
                                                     <constraint firstAttribute="width" constant="24" id="szl-Z0-gjH"/>
@@ -1172,7 +1172,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yg2-WP-zDN">
-                                                <rect key="frame" x="47.666666666666671" y="350" width="32.000000000000014" height="32"/>
+                                                <rect key="frame" x="48" y="350" width="32" height="32"/>
                                                 <state key="normal" image="insert-image"/>
                                                 <connections>
                                                     <action selector="onAddOrEditImage:" destination="ha4-R5-b5j" eventType="touchUpInside" id="I4m-q9-zFV"/>
@@ -1217,7 +1217,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2G8-jH-6ME">
-                                                <rect key="frame" x="335.33333333333331" y="350" width="32" height="32"/>
+                                                <rect key="frame" x="335" y="350" width="32" height="32"/>
                                                 <state key="normal" image="insert-image"/>
                                                 <connections>
                                                     <action selector="onAddOrEditImage:" destination="ha4-R5-b5j" eventType="touchUpInside" id="Vcu-Cx-OMg"/>
