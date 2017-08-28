@@ -514,6 +514,7 @@ PFObject *kamanArea;
                                 //set controller to pick from camera
                                 [view dismissViewControllerAnimated:YES completion:nil];
                                 pickerLibrary.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                pickerLibrary.delegate = self;
                                 pickerLibrary.cameraDevice = UIImagePickerControllerCameraDeviceRear;
                                 [pickerLibrary setShowsCameraControls:YES];
                                 [pickerLibrary setAllowsEditing:YES];

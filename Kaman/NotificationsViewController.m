@@ -1027,6 +1027,10 @@ UITableView * otherNotifsTableView;
     cell.button1.tag = indexPath.row;
     cell.button2.tag = indexPath.row;
     cell.button3.tag = indexPath.row;
+    cell.button1.titleLabel.adjustsFontSizeToFitWidth=YES;
+    cell.button2.titleLabel.adjustsFontSizeToFitWidth=YES;
+    cell.button2.titleLabel.adjustsFontSizeToFitWidth=YES;
+    
     
     // reset actions
     [cell.editViewButton removeTarget:nil
@@ -1041,10 +1045,10 @@ UITableView * otherNotifsTableView;
     [cell.button3 removeTarget:nil
                                action:NULL
                      forControlEvents:UIControlEventAllEvents];
-    cell.button1.badgeView.badgeValue = 0;
-    cell.button2.badgeView.badgeValue = 0;
-   cell.button3.badgeView.badgeValue = 0;
-    [cell.fakeviewb1 bringSubviewToFront:(cell.stackviewb1)];
+   // cell.button1.badgeView.badgeValue = 0;
+   // cell.button2.badgeView.badgeValue = 0;
+   //cell.button3.badgeView.badgeValue = 0;
+  //  [cell.fakeviewb1 bringSubviewToFront:(cell.stackviewb1)];
     
     // AM added
    /*[cell.button1.badgeView setBadgeValue:1];
@@ -1065,29 +1069,40 @@ UITableView * otherNotifsTableView;
     if(self.segmentControl.selectedSegmentIndex == 1) { // Host section
         [cell.button1 setTitle: @"Private Messages" forState:UIControlStateNormal];
         [cell.button2 setTitle: @"Group Messages" forState:UIControlStateNormal];
-        [Utils setUIView:cell.button3 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
-        [cell.button3 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
+        [Utils setUIView:cell.button3 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+        [cell.button3 setTitleColor:MyOrangeColor  forState:UIControlStateNormal];
        
-        NSInteger requests = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_REQUESTED,kaman.objectId] toView:cell.fakeviewb1 position:MGBadgePositionTopLeft];
+        NSInteger requests = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_REQUESTED,kaman.objectId] toView:nil position:MGBadgePositionBottomRight];  //Removed but checking
         
-        NSInteger pmsgs = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_CHAT_MESSAGE,kaman.objectId] toView:cell.button2 position:MGBadgePositionTopRight];
+        NSInteger pmsgs = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_CHAT_MESSAGE,kaman.objectId] toView:cell.FakeviewTR position:MGBadgePositionTopLeft];
         
-        NSInteger groupChats = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_GROUP_MESSAGE,kaman.objectId] toView:cell.button3 position:MGBadgePositionTopRight];
+        NSInteger groupChats = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_GROUP_MESSAGE,kaman.objectId] toView:cell.FakeviewBR position:MGBadgePositionTopLeft];
         
        NSLog(@"Host Private Messages [%@]: %lu",[kaman objectForKey:@"Name"],pmsgs);
         NSLog(@"Host Group Messages [%@]: %lu",[kaman objectForKey:@"Name"],groupChats);
         
         if(pmsgs > 0) {
-            [cell.button1 setTitle: [NSString stringWithFormat: @"Msg Attendee (%lu)", pmsgs] forState:UIControlStateNormal];
+           // [cell.button1 setTitle: [NSString stringWithFormat: @"Msg Attendee (%lu)", pmsgs] forState:UIControlStateNormal];
+            [Utils setUIView:cell.button1 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+            [cell.button1 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
         } else {
-            [cell.button1 setTitle: @"Private Messages" forState:UIControlStateNormal];
+           // [cell.button1 setTitle: @"Private Messages" forState:UIControlStateNormal];
+            [Utils setUIView:cell.button1 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+            [cell.button1 setTitleColor:MyOrangeColor  forState:UIControlStateNormal];
+            
         }
         
         if(groupChats > 0) {
-            [cell.button2 setTitle: [NSString stringWithFormat: @"Msg Group (%lu)", groupChats] forState:UIControlStateNormal];
+          //  [cell.button2 setTitle: [NSString stringWithFormat: @"Msg Group (%lu)", groupChats] forState:UIControlStateNormal];
+            
+            [Utils setUIView:cell.button2 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+            [cell.button2 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
             
         } else {
-            [cell.button2 setTitle: @"Group Message" forState:UIControlStateNormal];
+           // [cell.button2 setTitle: @"Group Messages" forState:UIControlStateNormal];
+            [Utils setUIView:cell.button2 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+            [cell.button2 setTitleColor:MyOrangeColor  forState:UIControlStateNormal];
+            
         }
         
         if(pmsgs > 0 || groupChats > 0 || requests > 0) {
@@ -1117,8 +1132,8 @@ UITableView * otherNotifsTableView;
             [cell.button3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             
             [cell.editViewButton setTitle:@"View Details" forState:UIControlStateNormal];
-            [Utils setUIView:cell.editViewButton backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
-            [cell.editViewButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [Utils setUIView:cell.editViewButton backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+            [cell.editViewButton setTitleColor:MyOrangeColor forState:UIControlStateNormal];
             
             [cell.editViewButton addTarget:self action:@selector(viewKamanAsHost:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -1130,14 +1145,14 @@ UITableView * otherNotifsTableView;
         } else { // Up comming
             
             // AM Color set
-            [Utils setUIView:cell.button1 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+            [Utils setUIView:cell.button1 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor];
             
-            [Utils setUIView:cell.button2 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+            [Utils setUIView:cell.button2 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor];
             
-            [Utils setUIView:cell.button3 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+            [Utils setUIView:cell.button3 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor];
             
             [cell.editViewButton setTitle:@"Edit Details" forState:UIControlStateNormal];
-            [cell.editViewButton setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
+            [cell.editViewButton setTitleColor:MyOrangeColor forState:UIControlStateNormal];
             
             [cell.editViewButton removeTarget:nil
                                        action:NULL
@@ -1150,12 +1165,12 @@ UITableView * otherNotifsTableView;
             
             [cell.button3 addTarget:self action:@selector(viewKamanRequestsAsHost:) forControlEvents:UIControlEventTouchUpInside];
             
-            [cell.button1 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
-            [cell.button2 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
-            [cell.button3 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
+            [cell.button1 setTitleColor:MyOrangeColor  forState:UIControlStateNormal];
+            [cell.button2 setTitleColor:MyOrangeColor  forState:UIControlStateNormal];
+            [cell.button3 setTitleColor:MyOrangeColor  forState:UIControlStateNormal];
             [cell.button3 setAlpha:1.0];
 
-            [cell.button3 setTitle: @"Requests (0)" forState:UIControlStateNormal];
+            [cell.button3 setTitle: @"Requests" forState:UIControlStateNormal];
             // AM color complete
         }
         
@@ -1184,6 +1199,7 @@ UITableView * otherNotifsTableView;
                         [cell.button3 setTitle:[NSString stringWithFormat: @"Requests (%lu)",(unsigned long)[objects count]] forState:UIControlStateNormal];
                         if([objects count] > 0) {
                             cell.backgroundColor = MyLightestGray;
+                            
                         } else {
                             NSString * reqsQuery = [NSString stringWithFormat: @"target = 'Host' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_REQUESTED,kaman.objectId];
                             NSInteger deleted = [Utils deleteNotifsWithQuery:reqsQuery];
@@ -1231,11 +1247,11 @@ UITableView * otherNotifsTableView;
         [cell.button2 setTitle: @"Group Messages" forState:UIControlStateNormal];
         [cell.editViewButton setTitle:@"View Details" forState:UIControlStateNormal];
         
-        NSInteger invites = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_INVITED,kaman.objectId] toView:cell.button3 position:MGBadgePositionCenterRight];
+        NSInteger invites = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_INVITED,kaman.objectId] toView:nil position:MGBadgePositionTopLeft];
         
-        NSInteger pmsgs = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_CHAT_MESSAGE,kaman.objectId] toView:cell.fakeviewb1 position:MGBadgePositionTopLeft];
+        NSInteger pmsgs = [Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_CHAT_MESSAGE,kaman.objectId] toView:cell.FakeviewTR position:MGBadgePositionTopLeft];
         
-        NSInteger groupChats =[Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_GROUP_MESSAGE,kaman.objectId] toView:cell.button2 position:MGBadgePositionCenterRight];
+        NSInteger groupChats =[Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_GROUP_MESSAGE,kaman.objectId] toView:cell.FakeviewBR position:MGBadgePositionTopLeft];
         
         if(pmsgs > 0 || groupChats > 0 || invites > 0) {
             cell.backgroundColor = MyLightestGray;
@@ -1253,20 +1269,22 @@ UITableView * otherNotifsTableView;
             [cell.editViewButton setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
             
         } else {
-            [Utils setUIView:cell.button1 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
-            [cell.button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [Utils setUIView:cell.button1 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+            [cell.button1 setTitleColor:MyOrangeColor forState:UIControlStateNormal];
             
-            [Utils setUIView:cell.button2 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
-            [cell.button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [Utils setUIView:cell.editViewButton backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
-            [cell.editViewButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [Utils setUIView:cell.button2 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+            [cell.button2 setTitleColor:MyOrangeColor forState:UIControlStateNormal];
+            [Utils setUIView:cell.editViewButton backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+            [cell.editViewButton setTitleColor:MyOrangeColor forState:UIControlStateNormal];
         }
-        [Utils setUIView:cell.button3 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
-        [cell.button3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [Utils setUIView:cell.button3 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+        [cell.button3 setTitleColor:MyOrangeColor forState:UIControlStateNormal];
 
         if(indexPath.section == 0) { // Invitations section
             
-            NSInteger invitesCount =[Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_INVITED,kaman.objectId] toView:nil position:MGBadgePositionBottomLeft];
+            NSInteger invitesCount =[Utils updateNotifBadgeFor:[NSString stringWithFormat: @"target = 'Attendee' AND type = '%@' AND kamanId = '%@'",PUSH_TYPE_INVITED,kaman.objectId] toView:nil position:MGBadgePositionBottomRight];
+            //AM Remove badge and replace query
+            
             
             if(invitesCount > 0) {
                 cell.backgroundColor = MyLightestGray;
@@ -1284,6 +1302,13 @@ UITableView * otherNotifsTableView;
             
             [cell.button1 setTitle: @"Accept" forState:UIControlStateNormal];
             [cell.button2 setTitle: @"Decline" forState:UIControlStateNormal];
+            
+            [Utils setUIView:cell.button1 backgroundColor:WhatsappGreenColor andRoundedByRadius:3 withBorderColor:WhatsappGreenColor];
+            [cell.button1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
+            [Utils setUIView:cell.button2 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor];
+            [cell.button2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
             
 
             [cell.button3 setAlpha:0.0]; // hide 3rd button
@@ -1305,17 +1330,28 @@ UITableView * otherNotifsTableView;
             
             if(pmsgs > 0) {
                 [cell.button1 setTitle: [NSString stringWithFormat: @"Host Messages (%lu)", pmsgs] forState:UIControlStateNormal];
+                
+                [Utils setUIView:cell.button1 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+                [cell.button1 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
             } else {
                 [cell.button1 setTitle: @"Host Messages" forState:UIControlStateNormal];
+                
+                [Utils setUIView:cell.button1 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+                [cell.button1 setTitleColor:MyOrangeColor  forState:UIControlStateNormal];
             }
             
             if(groupChats > 0) {
                 [cell.button2 setTitle: [NSString stringWithFormat: @"Msg Group (%lu)", groupChats] forState:UIControlStateNormal];
-                // AM test badge
+                
+                [Utils setUIView:cell.button2 backgroundColor:MyOrangeColor andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+                [cell.button2 setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
                 
                 
             } else {
                 [cell.button2 setTitle: @"Group Messages" forState:UIControlStateNormal];
+                
+                [Utils setUIView:cell.button2 backgroundColor:[UIColor whiteColor] andRoundedByRadius:3 withBorderColor:MyOrangeColor]; //AM color
+                [cell.button2 setTitleColor:MyOrangeColor  forState:UIControlStateNormal];
             }
             
             [cell.editViewButton addTarget:self action:@selector(viewAcceptedKamanAsAttendee:) forControlEvents:UIControlEventTouchUpInside];
